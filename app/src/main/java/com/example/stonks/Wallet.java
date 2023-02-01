@@ -1,11 +1,23 @@
 package com.example.stonks;
 
+import java.util.List;
+
 public class Wallet {
-    Double Money;
+    double Money;
     String Name;
 
-    Movement[] Movements;
-    FixedExpense[] FixedExpenses;
+    List<Movement> Movements;
+    List<FixedExpense> FixedExpenses;
 
     public Wallet(){}
+
+    public double getActualAmount(){
+        return Money;
+    }
+
+    public Movement createMovement(String description, double amount, Clasification clasification){
+        Movement movement =  new Movement(description, amount, Money, clasification);
+        Movements.add(movement);
+        return movement;
+    }
 }

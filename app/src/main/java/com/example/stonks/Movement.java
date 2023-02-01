@@ -1,23 +1,33 @@
 package com.example.stonks;
 
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
+
+import java.util.Date;
 
 
 public class Movement {
-    String Description = null;
-    Boolean IsDebt = null;
-    Double Mount = null;
+    String Description;
+    boolean IsDebt;
+    double Amount;
+    double BeforeAmount;
+    Date date;
 
-    Clasification Clasification = null;
+    Clasification Clasification;
     @Nullable
-    Person Person = null;
+    Person Person;
 
-    public Movement(String description, boolean isDebt, double mount){
+    public Movement(String description, double amount, double beforeAmount, Clasification clasification){
     Description = description;
-    IsDebt = isDebt;
-    Mount = mount;
+    Amount = amount;
+    BeforeAmount = beforeAmount;
+    Clasification = clasification;
+    date = new Date();
     }
 
-
+    public double getResult(){
+        return BeforeAmount - Amount;
+    }
 
 }
