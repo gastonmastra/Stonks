@@ -3,18 +3,21 @@ package com.example.stonks;
 import androidx.annotation.Nullable;
 
 
-public interface Movement {
-    String Description;
-    Boolean IsDebt;
-    Double Mount;
+public class Movement {
+    String Description = null;
+    Boolean IsDebt = null;
+    Double Mount = null;
 
-    Clasification Clasification;
+    Clasification Clasification = null;
     @Nullable
-    Person Person;
+    Person Person = null;
 
-    public Movement(String description, Boolean isDebt, Double mount) {
-        this.Description = description;
-        this.IsDebt = isDebt;
-        this.Mount = mount;
+    public Movement(String description, boolean isDebt, double mount){
+    Description = description;
+    IsDebt = isDebt;
+    Mount = mount;
     }
+
+
+
 }

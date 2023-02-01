@@ -42,9 +42,9 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
 
     private void RegisterExpensee(View view){
         String description = etDescription.getText().toString();
-        Double mount = Double.parseDouble(etMount.getText().toString());
-        Movement movement = new Movement(description, true, mount);
-        Toast.makeText(this, "Movement " + movement.Description + " a " + movement.Mount, Toast.LENGTH_LONG).show();
+        double mount = Double.parseDouble(etMount.getText().toString());
+        Movement movement = new OutputMovement(description, false, mount);
+        Toast.makeText(this, "Se registró " + movement.Description + " a $" + movement.Mount, Toast.LENGTH_LONG).show();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){

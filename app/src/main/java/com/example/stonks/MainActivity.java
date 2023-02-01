@@ -22,12 +22,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view){
-        switch (view.getId()){
-            case R.id.btnRegisterExpense:
-                Intent intent = new Intent(this, RegisterExpense.class);
-                startActivity(intent);
-            default:
-                break;
+        if (view.getId() == R.id.btnRegisterExpense) {
+            Intent intent = new Intent(this, RegisterExpense.class);
+            startActivity(intent);
         }
     }
 }
