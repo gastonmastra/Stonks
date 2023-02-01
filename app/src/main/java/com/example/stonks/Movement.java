@@ -13,5 +13,9 @@ public class Movement {
     @Nullable
     Person Person;
 
-    public Movement() {}
+    public Movement(String description, Boolean isDebt, Double mount) {
+        this.Description = description;
+        this.IsDebt = isDebt;
+        this.Mount = mount;
+    }
 }
