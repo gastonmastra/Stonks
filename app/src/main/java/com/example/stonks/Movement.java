@@ -3,12 +3,11 @@ package com.example.stonks;
 import androidx.annotation.Nullable;
 
 
-public class Movement {
+public interface Movement {
     String Description;
     Boolean IsDebt;
     Double Mount;
 
-    MovementType MovementType;
     Clasification Clasification;
     @Nullable
     Person Person;
