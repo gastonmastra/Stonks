@@ -12,7 +12,7 @@ import com.example.stonks.database.AppDatabase;
 import com.example.stonks.database.daos.UserDao;
 import com.example.stonks.database.entities.User;
 import com.example.stonks.database.repository.interfaces.IUserRepository;
-import com.example.stonks.database.repository.UserRepositoryRoom;
+import com.example.stonks.database.repository.room.UserRepositoryRoom;
 
 import java.util.List;
 

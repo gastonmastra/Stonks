@@ -1,4 +1,4 @@
-package com.example.stonks.database.repository;
+package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.MovementDao;
 import com.example.stonks.database.entities.Movement;
