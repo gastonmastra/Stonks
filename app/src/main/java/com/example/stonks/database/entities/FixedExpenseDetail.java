@@ -1,10 +1,18 @@
 package com.example.stonks.database.entities;
 
 import androidx.annotation.Nullable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
+@Entity(tableName = "Fixed_Expense_Detail")
 public class FixedExpenseDetail {
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "fixed_expense_detail_id")
+    private int FixedExpenseDetailId;
     private Date Date;
     @Nullable
     private
@@ -58,5 +66,12 @@ public class FixedExpenseDetail {
 
     public void setPerson(@Nullable com.example.stonks.database.entities.Person person) {
         Person = person;
+    }
+    public int getFixedExpenseDetailId() {
+        return FixedExpenseDetailId;
+    }
+
+    public void setFixedExpenseDetailId(int fixedExpenseDetailId) {
+        FixedExpenseDetailId = fixedExpenseDetailId;
     }
 }

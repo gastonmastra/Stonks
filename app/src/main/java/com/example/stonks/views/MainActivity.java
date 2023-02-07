@@ -1,7 +1,6 @@
 package com.example.stonks.views;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +11,8 @@ import com.example.stonks.R;
 import com.example.stonks.database.AppDatabase;
 import com.example.stonks.database.daos.UserDao;
 import com.example.stonks.database.entities.User;
-import com.example.stonks.database.repository.IUserRepository;
+import com.example.stonks.database.repository.interfaces.IUserRepository;
 import com.example.stonks.database.repository.UserRepositoryRoom;
-import com.example.stonks.views.RegisterExpense;
 
 import java.util.List;
 

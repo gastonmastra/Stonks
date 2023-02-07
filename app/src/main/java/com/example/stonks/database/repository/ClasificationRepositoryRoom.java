@@ -2,6 +2,7 @@ package com.example.stonks.database.repository;
 
 import com.example.stonks.database.daos.ClasificationDao;
 import com.example.stonks.database.entities.Clasification;
+import com.example.stonks.database.repository.interfaces.IClasificationRepository;
 
 import java.util.List;
 

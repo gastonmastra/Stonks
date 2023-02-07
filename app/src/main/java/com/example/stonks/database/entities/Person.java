@@ -1,8 +1,14 @@
 package com.example.stonks.database.entities;
 
-import androidx.annotation.Nullable;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "Persons")
 public class Person {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "person_id")
+    private int PersonId;
     private String Name;
     private String Surname;
     private Double Debt;
@@ -32,4 +38,13 @@ public class Person {
     public void setDebt(Double debt) {
         Debt = debt;
     }
+
+    public int getPersonId() {
+        return PersonId;
+    }
+
+    public void setPersonId(int personId) {
+        PersonId = personId;
+    }
+
 }

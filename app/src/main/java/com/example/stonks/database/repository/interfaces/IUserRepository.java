@@ -1,4 +1,4 @@
-package com.example.stonks.database.repository;
+package com.example.stonks.database.repository.interfaces;
 
 import com.example.stonks.database.entities.User;
 
