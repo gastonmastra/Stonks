@@ -1,4 +1,9 @@
-package com.example.stonks;
+package com.example.stonks.controllers;
+
+import com.example.stonks.database.entities.Clasification;
+import com.example.stonks.database.entities.Movement;
+import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.views.RegisterExpense;
 
 import java.util.Date;
 
@@ -10,7 +15,7 @@ public class RegisterExpenseController {
     RegisterExpense Screen;
     Date Date;
     String[] Clasifications;
-    Clasification Clasification;
+    com.example.stonks.database.entities.Clasification Clasification;
 
     public RegisterExpenseController(RegisterExpense screen){
         Screen = screen;

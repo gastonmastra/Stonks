@@ -1,4 +1,4 @@
-package com.example.stonks;
+package com.example.stonks.views;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.stonks.R;
+import com.example.stonks.controllers.RegisterExpenseController;
+import com.example.stonks.database.entities.Movement;
 
 public class RegisterExpense extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -42,7 +46,7 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         String description = etDescription.getText().toString();
         double amount = Double.parseDouble(etMount.getText().toString());
         Movement movement = Controller.Register(description, amount, "prueba");
-        Toast.makeText(this, "Movimiento " + movement.Description + " a $" + movement.Amount + " creado con éxito.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Movimiento " + movement.getDescription() + " a $" + movement.getAmount() + " creado con éxito.", Toast.LENGTH_LONG).show();
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
