@@ -16,26 +16,26 @@ public class ClasificationRepositoryRoom implements IClasificationRepository {
 
     @Override
     public List<Clasification> getAllClasifications() {
-        return null;
+        return dao.getClasifications();
     }
 
     @Override
     public Clasification getClasification(int clasificationId) {
-        return null;
+        return dao.getClasification(clasificationId);
     }
 
     @Override
     public void insertClasification(Clasification clasification) {
-
+        dao.insertClasification(clasification);
     }
 
     @Override
     public void deleteClasification(Clasification clasification) {
-
+        dao.deleteClasification(clasification);
     }
 
     @Override
     public void updateClasification(Clasification clasification) {
-
+        dao.updateClasification(clasification);
     }
 }
