@@ -15,7 +15,7 @@ import java.util.List;
 public interface MovementDao {
     @Query("SELECT * FROM Movement")
     List<Movement> getMovements();
-    @Query("SELECT * FROM Movement WHERE MovementId = :movementId")
+    @Query("SELECT * FROM Movement WHERE movement_id = :movementId")
     Movement getMovement(int movementId);
     @Insert
     void insertMovement(Movement movement);

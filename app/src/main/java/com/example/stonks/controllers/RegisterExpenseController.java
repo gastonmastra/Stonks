@@ -3,6 +3,8 @@ package com.example.stonks.controllers;
 import com.example.stonks.database.entities.Clasification;
 import com.example.stonks.database.entities.Movement;
 import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.repository.interfaces.IMovementRepository;
+import com.example.stonks.database.repository.room.MovementRepositoryRoom;
 import com.example.stonks.views.RegisterExpense;
 
 import java.util.Date;
@@ -16,6 +18,7 @@ public class RegisterExpenseController {
     Date Date;
     String[] Clasifications;
     com.example.stonks.database.entities.Clasification Clasification;
+    IMovementRepository _movementRepository;
 
     public RegisterExpenseController(RegisterExpense screen){
         Screen = screen;
@@ -31,12 +34,13 @@ public class RegisterExpenseController {
         Screen.showClasifications(Clasifications);
     }
 
-    public Movement Register(String description, double amount, String clasification){
+    public Movement Register(String description, double amount){
         Description = description;
         Amount = amount;
-        Clasification = new Clasification(){};
         validateInfo();
-        return Wallet.createMovement(Description, Amount, Clasification);
+        Movement movement = Wallet.createMovement(Description, Amount);
+
+        return movement;
 
     }
 

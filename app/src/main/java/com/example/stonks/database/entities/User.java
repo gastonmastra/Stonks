@@ -17,8 +17,6 @@ public class User {
     private String Username;
     private String Password;
 
-    //Wallet[] Wallets;
-
     public User(){ }
 
     public int getUserId() {

@@ -45,8 +45,9 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     private void Register(View view){
         String description = etDescription.getText().toString();
         double amount = Double.parseDouble(etMount.getText().toString());
-        Movement movement = Controller.Register(description, amount, "prueba");
+        Movement movement = Controller.Register(description, amount);
         Toast.makeText(this, "Movimiento " + movement.getDescription() + " a $" + movement.getAmount() + " creado con éxito.", Toast.LENGTH_LONG).show();
+
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){

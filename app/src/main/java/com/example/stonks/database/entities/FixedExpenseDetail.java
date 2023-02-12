@@ -20,10 +20,6 @@ public class FixedExpenseDetail {
     private Double Mount;
     private Boolean Payed;
 
-    @Nullable
-    private
-    Person Person;
-
     public FixedExpenseDetail(){}
 
     public java.util.Date getDate() {
@@ -59,14 +55,6 @@ public class FixedExpenseDetail {
         Payed = payed;
     }
 
-    @Nullable
-    public com.example.stonks.database.entities.Person getPerson() {
-        return Person;
-    }
-
-    public void setPerson(@Nullable com.example.stonks.database.entities.Person person) {
-        Person = person;
-    }
     public int getFixedExpenseDetailId() {
         return FixedExpenseDetailId;
     }

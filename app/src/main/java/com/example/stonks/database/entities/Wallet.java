@@ -3,6 +3,7 @@ package com.example.stonks.database.entities;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,23 +18,26 @@ public class Wallet {
     private double Money;
     private String Name;
 
-    private List<Movement> Movements;
-    private List<FixedExpense> FixedExpenses;
-
-    public Wallet(){
-        setMovements(new ArrayList<Movement>());
-    }
+    public Wallet() { }
 
     public double getActualAmount(){
         return getMoney();
     }
 
-    public Movement createMovement(String description, double amount, Clasification clasification){
+    public Movement createMovement(String description, double amount){
         Movement movement =  new Movement();
         movement.setDescription(description);
         movement.setAmount(amount);
-        getMovements().add(movement);
+
         return movement;
+    }
+
+    public int getWalletId() {
+        return WalletId;
+    }
+
+    public void setWalletId(int walletId) {
+        WalletId = walletId;
     }
 
     public double getMoney() {
@@ -50,21 +54,5 @@ public class Wallet {
 
     public void setName(String name) {
         Name = name;
-    }
-
-    public List<Movement> getMovements() {
-        return Movements;
-    }
-
-    public void setMovements(List<Movement> movements) {
-        Movements = movements;
-    }
-
-    public List<FixedExpense> getFixedExpenses() {
-        return FixedExpenses;
-    }
-
-    public void setFixedExpenses(List<FixedExpense> fixedExpenses) {
-        FixedExpenses = fixedExpenses;
     }
 }

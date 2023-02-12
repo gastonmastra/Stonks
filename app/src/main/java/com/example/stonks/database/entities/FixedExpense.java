@@ -12,7 +12,6 @@ public class FixedExpense {
     private String Description;
     private String Name;
 
-    private FixedExpenseDetail[] FixedExpenseDetail;
 
     public FixedExpense(){}
 
@@ -32,13 +31,6 @@ public class FixedExpense {
         Name = name;
     }
 
-    public com.example.stonks.database.entities.FixedExpenseDetail[] getFixedExpenseDetail() {
-        return FixedExpenseDetail;
-    }
-
-    public void setFixedExpenseDetail(com.example.stonks.database.entities.FixedExpenseDetail[] fixedExpenseDetail) {
-        FixedExpenseDetail = fixedExpenseDetail;
-    }
     public int getFixedExpenseId() {
         return FixedExpenseId;
     }

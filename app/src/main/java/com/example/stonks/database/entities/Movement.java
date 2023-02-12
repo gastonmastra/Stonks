@@ -1,5 +1,6 @@
 package com.example.stonks.database.entities;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -8,25 +9,22 @@ import java.util.Date;
 @Entity
 public class Movement {
     @PrimaryKey( autoGenerate = true )
+    @ColumnInfo(
+            name = "movement_id"
+    )
     private int MovementId;
     private String Description;
-
-    public void setMovementId(int movementId) {
-        MovementId = movementId;
-    }
-
-
 
     private boolean Debt;
     private double Amount;
     private double BeforeAmount;
     private Date Date;
 
-    //Clasification Clasification;
-    //@Nullable
-    //Person Person;
-
     public Movement(){ }
+
+    public void setMovementId(int movementId) {
+        MovementId = movementId;
+    }
 
     public int getMovementId() {
         return MovementId;

@@ -11,8 +11,13 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.example.stonks.common.Converters;
+import com.example.stonks.database.daos.ClasificationDao;
 import com.example.stonks.database.daos.FixedExpenseDao;
+import com.example.stonks.database.daos.FixedExpenseDetailDao;
+import com.example.stonks.database.daos.MovementDao;
+import com.example.stonks.database.daos.PersonDao;
 import com.example.stonks.database.daos.UserDao;
+import com.example.stonks.database.daos.WalletDao;
 import com.example.stonks.database.entities.Clasification;
 import com.example.stonks.database.entities.FixedExpense;
 import com.example.stonks.database.entities.FixedExpenseDetail;
@@ -26,7 +31,7 @@ import com.example.stonks.database.entities.Wallet;
                 User.class, Movement.class, Clasification.class, FixedExpense.class,
                 FixedExpenseDetail.class, Person.class, Wallet.class
         },
-        version = 5,
+        version = 6,
         exportSchema = true,
         autoMigrations = {
                 @AutoMigration(from = 1, to = 2),
@@ -49,5 +54,11 @@ public abstract class AppDatabase extends RoomDatabase {
     }
 
     public abstract UserDao userDao();
+    public abstract MovementDao movementDao();
+    public abstract ClasificationDao clasificationDao();
+    public abstract FixedExpenseDao fixedExpenseDao();
+    public abstract FixedExpenseDetailDao fixedExpenseDetailDao();
+    public abstract PersonDao personDao();
+    public abstract WalletDao walletDao();
 
 }

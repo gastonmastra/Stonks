@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.stonks.R;
 import com.example.stonks.database.AppDatabase;
+import com.example.stonks.database.daos.MovementDao;
 import com.example.stonks.database.daos.UserDao;
 import com.example.stonks.database.entities.User;
 import com.example.stonks.database.repository.interfaces.IUserRepository;
@@ -30,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         InitializeButtons();
 
         AppDatabase db = AppDatabase.getInstance(this.getApplicationContext());
-        UserDao dao = db.userDao();
-        IUserRepository repo = new UserRepositoryRoom(dao);
+        UserDao userDao = db.userDao();
+        IUserRepository repo = new UserRepositoryRoom(userDao);
 
 
         User user = new User();

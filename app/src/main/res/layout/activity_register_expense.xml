@@ -7,6 +7,14 @@
     android:background="@drawable/background"
     tools:context=".views.RegisterExpense">
 
+    <TextView
+        android:id="@+id/tvRegisterExpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registerExpense"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="32sp" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -16,14 +24,12 @@
         android:drawableStart="@drawable/ic_baseline_description_24"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/description"
-        android:textColorHint="@color/white"
+        android:inputType="textPersonName"
         android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tvRegisterExpense"/>
 
     <EditText
         android:id="@+id/etMount"
@@ -38,29 +44,26 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="18sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
     <Spinner
         android:id="@+id/spinClasification"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="10dp"
         android:layout_weight="1"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etMount"
         />
 
     <Button
         android:id="@+id/btnRegisterExpense"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/register"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="266dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinClasification"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/spinClasification"
+         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
