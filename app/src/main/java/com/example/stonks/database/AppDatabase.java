@@ -11,24 +11,24 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.example.stonks.common.Converters;
-import com.example.stonks.database.daos.ClasificationDao;
+import com.example.stonks.database.daos.ClassificationDao;
 import com.example.stonks.database.daos.FixedExpenseDao;
 import com.example.stonks.database.daos.FixedExpenseDetailDao;
 import com.example.stonks.database.daos.MovementDao;
 import com.example.stonks.database.daos.PersonDao;
 import com.example.stonks.database.daos.UserDao;
 import com.example.stonks.database.daos.WalletDao;
-import com.example.stonks.database.entities.Clasification;
-import com.example.stonks.database.entities.FixedExpense;
-import com.example.stonks.database.entities.FixedExpenseDetail;
-import com.example.stonks.database.entities.Movement;
-import com.example.stonks.database.entities.Person;
-import com.example.stonks.database.entities.User;
-import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.daos.entities.Classification;
+import com.example.stonks.database.daos.entities.FixedExpense;
+import com.example.stonks.database.daos.entities.FixedExpenseDetail;
+import com.example.stonks.database.daos.entities.Movement;
+import com.example.stonks.database.daos.entities.Person;
+import com.example.stonks.database.daos.entities.User;
+import com.example.stonks.database.daos.entities.Wallet;
 
 @Database(
         entities = {
-                User.class, Movement.class, Clasification.class, FixedExpense.class,
+                User.class, Movement.class, Classification.class, FixedExpense.class,
                 FixedExpenseDetail.class, Person.class, Wallet.class
         },
         version = 6,
@@ -55,7 +55,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
     public abstract MovementDao movementDao();
-    public abstract ClasificationDao clasificationDao();
+    public abstract ClassificationDao classificationDao();
     public abstract FixedExpenseDao fixedExpenseDao();
     public abstract FixedExpenseDetailDao fixedExpenseDetailDao();
     public abstract PersonDao personDao();

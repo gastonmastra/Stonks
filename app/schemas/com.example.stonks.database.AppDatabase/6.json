@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 6,
-    "identityHash": "681b588dc0f9fea28259a51d3c1e5dcb",
+    "identityHash": "9017faa16207bd51b97940e9776cd112",
     "entities": [
       {
         "tableName": "User",
@@ -37,12 +37,24 @@
         "foreignKeys": []
       },
       {
-        "tableName": "Movement",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movement_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Description` TEXT, `Debt` INTEGER NOT NULL, `Amount` REAL NOT NULL, `BeforeAmount` REAL NOT NULL, `Date` INTEGER)",
+        "tableName": "Movements",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movement_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `wallet_id` INTEGER NOT NULL, `classification_id` INTEGER NOT NULL, `Description` TEXT, `Debt` INTEGER NOT NULL, `Amount` REAL NOT NULL, `BeforeAmount` REAL NOT NULL, `Date` INTEGER, FOREIGN KEY(`wallet_id`) REFERENCES `Wallets`(`wallet_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`classification_id`) REFERENCES `Classifications`(`classification_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "MovementId",
             "columnName": "movement_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "WalletId",
+            "columnName": "wallet_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ClassificationId",
+            "columnName": "classification_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -84,15 +96,38 @@
           ]
         },
         "indices": [],
-        "foreignKeys": []
+        "foreignKeys": [
+          {
+            "table": "Wallets",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "wallet_id"
+            ],
+            "referencedColumns": [
+              "wallet_id"
+            ]
+          },
+          {
+            "table": "Classifications",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "classification_id"
+            ],
+            "referencedColumns": [
+              "classification_id"
+            ]
+          }
+        ]
       },
       {
-        "tableName": "Clasifications",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`clasification_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Description` TEXT, `Name` TEXT)",
+        "tableName": "Classifications",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`classification_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Description` TEXT, `Name` TEXT)",
         "fields": [
           {
-            "fieldPath": "ClasificationId",
-            "columnName": "clasification_id",
+            "fieldPath": "ClassificationId",
+            "columnName": "classification_id",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -112,7 +147,7 @@
         "primaryKey": {
           "autoGenerate": true,
           "columnNames": [
-            "clasification_id"
+            "classification_id"
           ]
         },
         "indices": [],
@@ -268,7 +303,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '681b588dc0f9fea28259a51d3c1e5dcb')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9017faa16207bd51b97940e9776cd112')"
     ]
   }
 }

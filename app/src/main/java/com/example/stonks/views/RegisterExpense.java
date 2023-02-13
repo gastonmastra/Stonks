@@ -1,6 +1,7 @@
 package com.example.stonks.views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,16 +13,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.stonks.R;
-import com.example.stonks.controllers.RegisterExpenseController;
-import com.example.stonks.database.entities.Movement;
+import com.example.stonks.viewModels.RegisterExpenseViewModel;
+import com.example.stonks.database.daos.entities.Movement;
 
 public class RegisterExpense extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText etDescription, etMount;
     Spinner spinnerClasification;
-    String clasification;
+    String classification;
     Button btnRegister;
-    RegisterExpenseController Controller;
+    RegisterExpenseViewModel Model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,8 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         etMount = (EditText) findViewById(R.id.etMount);
         btnRegister = (Button) findViewById(R.id.btnRegisterExpense);
         btnRegister.setOnClickListener(this::Register);
-        Controller = new RegisterExpenseController(this);
+        Model = new ViewModelProvider(this).get(RegisterExpenseViewModel.class);
+
     }
 
     public void showClasifications(String[] clasifiactions){
@@ -45,13 +47,13 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     private void Register(View view){
         String description = etDescription.getText().toString();
         double amount = Double.parseDouble(etMount.getText().toString());
-        Movement movement = Controller.Register(description, amount);
+        Movement movement = Model.Register(description, amount);
         Toast.makeText(this, "Movimiento " + movement.getDescription() + " a $" + movement.getAmount() + " creado con éxito.", Toast.LENGTH_LONG).show();
 
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
-        clasification = parent.getItemAtPosition(pos).toString();
+        classification = parent.getItemAtPosition(pos).toString();
     }
 
     public void onNothingSelected(AdapterView<?> parent){

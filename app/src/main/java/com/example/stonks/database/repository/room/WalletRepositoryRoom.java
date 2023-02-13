@@ -1,16 +1,24 @@
 package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.WalletDao;
-import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.daos.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 
 import java.util.List;
 
 public class WalletRepositoryRoom implements IWalletRepository {
-    WalletDao dao;
+    private static WalletRepositoryRoom instance;
+    private final WalletDao dao;
 
-    public WalletRepositoryRoom(WalletDao dao) {
+    private WalletRepositoryRoom(WalletDao dao) {
         this.dao = dao;
+    }
+
+    public static WalletRepositoryRoom getInstance(WalletDao dao){
+        if (instance == null){
+            instance = new WalletRepositoryRoom(dao);
+        }
+        return instance;
     }
 
     @Override

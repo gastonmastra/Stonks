@@ -1,16 +1,24 @@
 package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.MovementDao;
-import com.example.stonks.database.entities.Movement;
+import com.example.stonks.database.daos.entities.Movement;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
 
 import java.util.List;
 
 public class MovementRepositoryRoom implements IMovementRepository {
-    MovementDao dao;
+    private static MovementRepositoryRoom instance;
+    private final MovementDao dao;
 
-    public MovementRepositoryRoom(MovementDao dao) {
+    private MovementRepositoryRoom(MovementDao dao) {
         this.dao = dao;
+    }
+
+    public static MovementRepositoryRoom getInstance(MovementDao dao){
+        if (instance == null){
+            instance = new MovementRepositoryRoom(dao);
+        }
+        return instance;
     }
 
     @Override

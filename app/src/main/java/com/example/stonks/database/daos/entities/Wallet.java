@@ -1,13 +1,8 @@
-package com.example.stonks.database.entities;
+package com.example.stonks.database.daos.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import androidx.room.Relation;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Entity(tableName = "Wallets")
 public class Wallet {

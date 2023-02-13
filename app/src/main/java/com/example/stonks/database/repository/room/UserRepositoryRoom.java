@@ -1,17 +1,24 @@
 package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.UserDao;
-import com.example.stonks.database.entities.User;
+import com.example.stonks.database.daos.entities.User;
 import com.example.stonks.database.repository.interfaces.IUserRepository;
 
 import java.util.List;
 
 public class UserRepositoryRoom implements IUserRepository {
+    private static UserRepositoryRoom instance;
+    private final UserDao dao;
 
-    UserDao dao;
-
-    public UserRepositoryRoom(UserDao dao) {
+    private UserRepositoryRoom (UserDao dao){
         this.dao = dao;
+    }
+
+    public static UserRepositoryRoom getInstance(UserDao dao) {
+        if (instance == null){
+            instance = new UserRepositoryRoom(dao);
+        }
+        return instance;
     }
 
     @Override

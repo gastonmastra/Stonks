@@ -6,16 +6,15 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.stonks.database.entities.Clasification;
-import com.example.stonks.database.entities.Movement;
+import com.example.stonks.database.daos.entities.Movement;
 
 import java.util.List;
 
 @Dao
 public interface MovementDao {
-    @Query("SELECT * FROM Movement")
+    @Query("SELECT * FROM Movements")
     List<Movement> getMovements();
-    @Query("SELECT * FROM Movement WHERE movement_id = :movementId")
+    @Query("SELECT * FROM Movements WHERE movement_id = :movementId")
     Movement getMovement(int movementId);
     @Insert
     void insertMovement(Movement movement);

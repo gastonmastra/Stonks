@@ -1,14 +1,23 @@
 package com.example.stonks.database.repository.room;
 
+import com.example.stonks.database.daos.ClassificationDao;
 import com.example.stonks.database.daos.FixedExpenseDetailDao;
-import com.example.stonks.database.entities.FixedExpenseDetail;
+import com.example.stonks.database.daos.entities.FixedExpenseDetail;
 import com.example.stonks.database.repository.interfaces.IFixedExpenseDetailRepository;
 
 public class FixedExpenseDetailRepositoryRoom implements IFixedExpenseDetailRepository {
-    FixedExpenseDetailDao dao;
+    private static FixedExpenseDetailRepositoryRoom instance;
+    private final FixedExpenseDetailDao dao;
 
-    public FixedExpenseDetailRepositoryRoom(FixedExpenseDetailDao dao) {
+    private FixedExpenseDetailRepositoryRoom(FixedExpenseDetailDao dao) {
         this.dao = dao;
+    }
+
+    public static FixedExpenseDetailRepositoryRoom getInstance(FixedExpenseDetailDao dao){
+        if (instance == null){
+            instance = new FixedExpenseDetailRepositoryRoom(dao);
+        }
+        return instance;
     }
 
     @Override

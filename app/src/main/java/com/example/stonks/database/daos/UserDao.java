@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.stonks.database.entities.User;
+import com.example.stonks.database.daos.entities.User;
 
 import java.util.List;
 

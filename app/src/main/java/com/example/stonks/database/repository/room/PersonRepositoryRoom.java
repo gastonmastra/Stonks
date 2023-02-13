@@ -1,18 +1,25 @@
 package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.PersonDao;
-import com.example.stonks.database.entities.Person;
+import com.example.stonks.database.daos.entities.Person;
 import com.example.stonks.database.repository.interfaces.IPersonRepository;
 
 import java.util.List;
 
 public class PersonRepositoryRoom implements IPersonRepository {
-    PersonDao dao;
+    private static PersonRepositoryRoom instance;
+    private final PersonDao dao;
 
-    public PersonRepositoryRoom(PersonDao dao) {
+    private PersonRepositoryRoom(PersonDao dao) {
         this.dao = dao;
     }
 
+    public static PersonRepositoryRoom getInstance(PersonDao dao){
+        if (instance == null){
+            instance = new PersonRepositoryRoom(dao);
+        }
+        return instance;
+    }
     @Override
     public List<Person> getAllPersons() {
         return dao.getAllPersons();

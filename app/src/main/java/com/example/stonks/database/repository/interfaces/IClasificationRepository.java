@@ -1,13 +1,13 @@
 package com.example.stonks.database.repository.interfaces;
 
-import com.example.stonks.database.entities.Clasification;
+import com.example.stonks.database.daos.entities.Classification;
 
 import java.util.List;
 
 public interface IClasificationRepository {
-    List<Clasification> getAllClasifications();
-    Clasification getClasification(int clasificationId);
-    void insertClasification(Clasification clasification);
-    void deleteClasification(Clasification clasification);
-    void updateClasification(Clasification clasification);
+    List<Classification> getAllClasifications();
+    Classification getClasification(int clasificationId);
+    void insertClasification(Classification clasification);
+    void deleteClasification(Classification clasification);
+    void updateClasification(Classification clasification);
 }

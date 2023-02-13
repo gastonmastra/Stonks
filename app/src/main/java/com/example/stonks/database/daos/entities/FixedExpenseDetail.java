@@ -1,4 +1,4 @@
-package com.example.stonks.database.entities;
+package com.example.stonks.database.daos.entities;
 
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;

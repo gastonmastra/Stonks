@@ -2,8 +2,6 @@ package com.example.stonks.common;
 
 import androidx.room.TypeConverter;
 
-import com.example.stonks.database.entities.Wallet;
-
 import java.util.Date;
 
 public class Converters {

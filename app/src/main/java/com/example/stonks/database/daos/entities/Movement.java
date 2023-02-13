@@ -1,20 +1,32 @@
-package com.example.stonks.database.entities;
+package com.example.stonks.database.daos.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity
+@Entity(
+        tableName = "Movements",
+        foreignKeys = {
+                @ForeignKey(
+                        entity = Wallet.class,
+                        parentColumns = "wallet_id",
+                        childColumns = "wallet_id"
+                ),
+                @ForeignKey(
+                        entity = Classification.class,
+                        parentColumns = "classification_id",
+                        childColumns = "classification_id"
+                )
+        }
+)
 public class Movement {
-    @PrimaryKey( autoGenerate = true )
-    @ColumnInfo(
-            name = "movement_id"
-    )
-    private int MovementId;
+    @PrimaryKey( autoGenerate = true ) @ColumnInfo( name = "movement_id" ) private int MovementId;
+    @ColumnInfo( name = "wallet_id" ) private int WalletId;
+    @ColumnInfo( name = "classification_id" ) private int ClassificationId;
     private String Description;
-
     private boolean Debt;
     private double Amount;
     private double BeforeAmount;
@@ -58,7 +70,6 @@ public class Movement {
         Date = date;
     }
 
-
     public double getResult(){
         return getBeforeAmount() - getAmount();
     }
@@ -73,5 +84,21 @@ public class Movement {
 
     public boolean isDebt() {
         return Debt;
+    }
+
+    public int getWalletId() {
+        return WalletId;
+    }
+
+    public void setWalletId(int walletId) {
+        WalletId = walletId;
+    }
+
+    public int getClassificationId() {
+        return ClassificationId;
+    }
+
+    public void setClassificationId(int classificationId) {
+        ClassificationId = classificationId;
     }
 }
