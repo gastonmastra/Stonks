@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.stonks.database.daos.entities.FixedExpense;
+import com.example.stonks.database.entities.FixedExpense;
 
 @Dao
 public interface FixedExpenseDao {

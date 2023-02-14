@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.interfaces;
 
-import com.example.stonks.database.daos.entities.FixedExpenseDetail;
+import com.example.stonks.database.entities.FixedExpenseDetail;
 
 public interface IFixedExpenseDetailRepository {
     FixedExpenseDetail getFixedExpenseDetail(int fixedExpenseDetailId);

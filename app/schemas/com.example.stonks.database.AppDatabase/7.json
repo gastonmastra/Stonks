@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
   "database": {
-    "version": 6,
-    "identityHash": "b44c36e474e43fa191349f8cd37c9b28",
+    "version": 7,
+    "identityHash": "2259b28151d2e87af7dbe9261a6cd2d4",
     "entities": [
       {
         "tableName": "User",
@@ -38,25 +38,25 @@
       },
       {
         "tableName": "Movements",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movement_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `wallet_id` INTEGER NOT NULL, `classification_id` INTEGER NOT NULL DEFAULT NULL, `Description` TEXT, `Debt` INTEGER NOT NULL, `Amount` REAL NOT NULL, `BeforeAmount` REAL NOT NULL, `Date` INTEGER, FOREIGN KEY(`wallet_id`) REFERENCES `Wallets`(`wallet_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`classification_id`) REFERENCES `Classifications`(`classification_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movement_id` INTEGER PRIMARY KEY AUTOINCREMENT, `wallet_id` INTEGER, `classification_id` INTEGER DEFAULT NULL, `Description` TEXT, `Debt` INTEGER NOT NULL, `Amount` REAL NOT NULL, `BeforeAmount` REAL NOT NULL, `Date` INTEGER, FOREIGN KEY(`wallet_id`) REFERENCES `Wallets`(`wallet_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`classification_id`) REFERENCES `Classifications`(`classification_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "MovementId",
             "columnName": "movement_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "WalletId",
             "columnName": "wallet_id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "ClassificationId",
             "columnName": "classification_id",
             "affinity": "INTEGER",
-            "notNull": true,
+            "notNull": false,
             "defaultValue": "NULL"
           },
           {
@@ -304,7 +304,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b44c36e474e43fa191349f8cd37c9b28')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2259b28151d2e87af7dbe9261a6cd2d4')"
     ]
   }
 }

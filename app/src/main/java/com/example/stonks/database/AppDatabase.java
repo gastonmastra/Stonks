@@ -18,20 +18,20 @@ import com.example.stonks.database.daos.MovementDao;
 import com.example.stonks.database.daos.PersonDao;
 import com.example.stonks.database.daos.UserDao;
 import com.example.stonks.database.daos.WalletDao;
-import com.example.stonks.database.daos.entities.Classification;
-import com.example.stonks.database.daos.entities.FixedExpense;
-import com.example.stonks.database.daos.entities.FixedExpenseDetail;
-import com.example.stonks.database.daos.entities.Movement;
-import com.example.stonks.database.daos.entities.Person;
-import com.example.stonks.database.daos.entities.User;
-import com.example.stonks.database.daos.entities.Wallet;
+import com.example.stonks.database.entities.Classification;
+import com.example.stonks.database.entities.FixedExpense;
+import com.example.stonks.database.entities.FixedExpenseDetail;
+import com.example.stonks.database.entities.Movement;
+import com.example.stonks.database.entities.Person;
+import com.example.stonks.database.entities.User;
+import com.example.stonks.database.entities.Wallet;
 
 @Database(
         entities = {
                 User.class, Movement.class, Classification.class, FixedExpense.class,
                 FixedExpenseDetail.class, Person.class, Wallet.class
         },
-        version = 6,
+        version = 7,
         exportSchema = true,
         autoMigrations = {
                 @AutoMigration(from = 1, to = 2),

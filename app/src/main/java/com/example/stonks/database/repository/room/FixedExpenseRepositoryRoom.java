@@ -1,7 +1,7 @@
 package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.FixedExpenseDao;
-import com.example.stonks.database.daos.entities.FixedExpense;
+import com.example.stonks.database.entities.FixedExpense;
 import com.example.stonks.database.repository.interfaces.IFixedExpenseRepository;
 
 public class FixedExpenseRepositoryRoom implements IFixedExpenseRepository {

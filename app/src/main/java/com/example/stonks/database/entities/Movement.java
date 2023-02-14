@@ -1,4 +1,4 @@
-package com.example.stonks.database.daos.entities;
+package com.example.stonks.database.entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -23,9 +23,9 @@ import java.util.Date;
         }
 )
 public class Movement {
-    @PrimaryKey( autoGenerate = true ) @ColumnInfo( name = "movement_id" ) private int MovementId;
-    @ColumnInfo( name = "wallet_id" ) private int WalletId;
-    @ColumnInfo( name = "classification_id" ) private int ClassificationId;
+    @PrimaryKey( autoGenerate = true ) @ColumnInfo( name = "movement_id" ) private Long MovementId;
+    @ColumnInfo( name = "wallet_id" ) private Long WalletId;
+    @ColumnInfo( name = "classification_id", defaultValue = "NULL") private Long ClassificationId;
     private String Description;
     private boolean Debt;
     private double Amount;
@@ -34,11 +34,11 @@ public class Movement {
 
     public Movement(){ }
 
-    public void setMovementId(int movementId) {
+    public void setMovementId(Long movementId) {
         MovementId = movementId;
     }
 
-    public int getMovementId() {
+    public Long getMovementId() {
         return MovementId;
     }
 
@@ -86,19 +86,19 @@ public class Movement {
         return Debt;
     }
 
-    public int getWalletId() {
+    public Long getWalletId() {
         return WalletId;
     }
 
-    public void setWalletId(int walletId) {
+    public void setWalletId(Long walletId) {
         WalletId = walletId;
     }
 
-    public int getClassificationId() {
+    public Long getClassificationId() {
         return ClassificationId;
     }
 
-    public void setClassificationId(int classificationId) {
+    public void setClassificationId(Long classificationId) {
         ClassificationId = classificationId;
     }
 }

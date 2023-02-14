@@ -1,17 +1,19 @@
-package com.example.stonks.database.daos.entities;
+package com.example.stonks.database.entities;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Classifications")
-public class Classification {
+@Entity(tableName = "Fixed_Expenses")
+public class FixedExpense {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "classification_id")
-    private int ClassificationId;
+    @ColumnInfo(name = "fixed_expense_id")
+    private int FixedExpenseId;
     private String Description;
     private String Name;
 
-    public Classification(){}
+
+    public FixedExpense(){}
 
     public String getDescription() {
         return Description;
@@ -29,12 +31,11 @@ public class Classification {
         Name = name;
     }
 
-    public int getClassificationId() {
-        return ClassificationId;
+    public int getFixedExpenseId() {
+        return FixedExpenseId;
     }
 
-    public void setClassificationId(int clasificationId) {
-        ClassificationId = clasificationId;
+    public void setFixedExpenseId(int fixedExpenseId) {
+        FixedExpenseId = fixedExpenseId;
     }
-
 }

@@ -1,7 +1,7 @@
 package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.UserDao;
-import com.example.stonks.database.daos.entities.User;
+import com.example.stonks.database.entities.User;
 import com.example.stonks.database.repository.interfaces.IUserRepository;
 
 import java.util.List;

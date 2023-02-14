@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.interfaces;
 
-import com.example.stonks.database.daos.entities.Person;
+import com.example.stonks.database.entities.Person;
 
 import java.util.List;
 

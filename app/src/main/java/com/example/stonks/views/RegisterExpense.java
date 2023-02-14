@@ -1,6 +1,8 @@
 package com.example.stonks.views;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -14,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.stonks.R;
 import com.example.stonks.viewModels.RegisterExpenseViewModel;
-import com.example.stonks.database.daos.entities.Movement;
+import com.example.stonks.database.entities.Movement;
 
 public class RegisterExpense extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -34,7 +36,14 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         btnRegister = (Button) findViewById(R.id.btnRegisterExpense);
         btnRegister.setOnClickListener(this::Register);
         Model = new ViewModelProvider(this).get(RegisterExpenseViewModel.class);
-
+        final Observer<Movement> movement = new Observer<Movement>() {
+            @Override
+            public void onChanged(@Nullable final Movement movement) {
+                if (movement != null)
+                    showMovement(movement);
+            }
+        };
+        Model.getMovement().observe(this, movement);
     }
 
     public void showClasifications(String[] clasifiactions){
@@ -44,12 +53,14 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         spinnerClasification.setOnItemSelectedListener(this);
     }
 
+    private void showMovement(Movement movement){
+        Toast.makeText(this, "Movimiento " + movement.getDescription() + " a $" + movement.getAmount() + " creado con éxito.", Toast.LENGTH_LONG).show();
+    }
+
     private void Register(View view){
         String description = etDescription.getText().toString();
         double amount = Double.parseDouble(etMount.getText().toString());
-        Movement movement = Model.Register(description, amount);
-        Toast.makeText(this, "Movimiento " + movement.getDescription() + " a $" + movement.getAmount() + " creado con éxito.", Toast.LENGTH_LONG).show();
-
+        Model.Register(description, amount);
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){

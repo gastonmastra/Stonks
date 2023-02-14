@@ -1,7 +1,7 @@
 package com.example.stonks.database.repository.room;
 
 import com.example.stonks.database.daos.MovementDao;
-import com.example.stonks.database.daos.entities.Movement;
+import com.example.stonks.database.entities.Movement;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
 
 import java.util.List;

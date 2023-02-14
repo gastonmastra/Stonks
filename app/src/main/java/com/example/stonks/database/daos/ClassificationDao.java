@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.stonks.database.daos.entities.Classification;
+import com.example.stonks.database.entities.Classification;
 
 import java.util.List;
 
