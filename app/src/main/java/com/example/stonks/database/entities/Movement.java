@@ -26,11 +26,11 @@ public class Movement {
     @PrimaryKey( autoGenerate = true ) @ColumnInfo( name = "movement_id" ) private Long MovementId;
     @ColumnInfo( name = "wallet_id" ) private Long WalletId;
     @ColumnInfo( name = "classification_id", defaultValue = "NULL") private Long ClassificationId;
-    private String Description;
-    private boolean Debt;
-    private double Amount;
-    private double BeforeAmount;
-    private Date Date;
+    public String Description;
+    public boolean Debt;
+    public double Amount;
+    public double BeforeAmount;
+    public Date Date;
 
     public Movement(){ }
 

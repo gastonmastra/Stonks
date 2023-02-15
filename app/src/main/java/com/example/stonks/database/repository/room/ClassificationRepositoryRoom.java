@@ -24,7 +24,7 @@ public class ClassificationRepositoryRoom implements IClassificationRepository {
     }
 
     @Override
-    public LiveData<List<Classification>> getAllClassifications() {
+    public List<Classification> getAllClassifications() {
         return dao.getClassifications();
     }
 

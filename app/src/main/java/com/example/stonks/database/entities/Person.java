@@ -8,10 +8,10 @@ import androidx.room.PrimaryKey;
 public class Person {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "person_id")
-    private int PersonId;
-    private String Name;
-    private String Surname;
-    private Double Debt;
+    public int PersonId;
+    public String Name;
+    public String Surname;
+    public Double Debt;
 
     public Person(){}
 

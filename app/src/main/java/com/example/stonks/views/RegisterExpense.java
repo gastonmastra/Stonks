@@ -61,13 +61,10 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
                 showClassifications(classifications);
             }
         };
-        Model.getClassifications().observe(this, classifications);
+        showClassifications(Model.getClassifications());
     }
 
     public void showClassifications(List<Classification> classifications){
-        for (int i = 0; i < classifications.size(); i++){
-            Toast.makeText(this, i +  classifications.get(i).getName(), Toast.LENGTH_LONG).show();
-        }
         ArrayAdapter adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, classifications);
         spinnerClassification.setAdapter(adapter);
         spinnerClassification.setOnItemSelectedListener(this);
@@ -80,7 +77,8 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     private void Register(View view){
         String description = etDescription.getText().toString();
         double amount = Double.parseDouble(etMount.getText().toString());
-        Model.Register(description, amount);
+        Classification classificationSelected = (Classification)spinnerClassification.getSelectedItem();
+        Model.Register(description, amount, classificationSelected.getClassificationId());
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){

@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey;
 public class FixedExpense {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "fixed_expense_id")
-    private int FixedExpenseId;
-    private String Description;
-    private String Name;
+    public int FixedExpenseId;
+    public String Description;
+    public String Name;
 
 
     public FixedExpense(){}

@@ -12,12 +12,12 @@ public class FixedExpenseDetail {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "fixed_expense_detail_id")
-    private int FixedExpenseDetailId;
-    private Date Date;
+    public int FixedExpenseDetailId;
+    public Date Date;
     @Nullable
-    private Date DateOfPayment;
-    private Double Mount;
-    private Boolean Payed;
+    public Date DateOfPayment;
+    public Double Mount;
+    public Boolean Payed;
 
     public FixedExpenseDetail(){}
 

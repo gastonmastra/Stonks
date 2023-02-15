@@ -9,9 +9,9 @@ public class Wallet {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "wallet_id")
-    private int WalletId;
-    private double Money;
-    private String Name;
+    public int WalletId;
+    public double Money;
+    public String Name;
 
     public Wallet() { }
 
@@ -19,10 +19,11 @@ public class Wallet {
         return getMoney();
     }
 
-    public Movement createMovement(String description, double amount){
+    public Movement createMovement(String description, double amount, long classificationId){
         Movement movement =  new Movement();
         movement.setDescription(description);
         movement.setAmount(amount);
+        movement.setClassificationId(classificationId);
 
         return movement;
     }

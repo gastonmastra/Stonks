@@ -36,6 +36,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context){
         if (Instance == null){
             Instance = Room.databaseBuilder(context, AppDatabase.class, "pruebaDb")
+                    .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
                     .build();
         }

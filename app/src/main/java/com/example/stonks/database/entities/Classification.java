@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey;
 public class Classification {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "classification_id")
-    private int ClassificationId;
-    private String Description;
-    private String Name;
+    public int ClassificationId;
+    public String Description;
+    public String Name;
 
     public Classification(){}
 

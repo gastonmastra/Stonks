@@ -13,9 +13,9 @@ public class User {
     @PrimaryKey(
             autoGenerate = true
     )
-    private int UserId;
-    private String Username;
-    private String Password;
+    public int UserId;
+    public String Username;
+    public String Password;
 
     public User(){ }
 

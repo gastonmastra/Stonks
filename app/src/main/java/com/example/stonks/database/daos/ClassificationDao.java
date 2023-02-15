@@ -14,7 +14,7 @@ import java.util.List;
 @Dao
 public interface ClassificationDao {
     @Query("SELECT * FROM Classifications")
-    LiveData<List<Classification>> getClassifications();
+    List<Classification> getClassifications();
     @Query("SELECT * FROM Classifications WHERE classification_id = :classificationId")
     Classification getClassification(int classificationId);
     @Insert
