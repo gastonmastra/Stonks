@@ -1,4 +1,5 @@
 package com.example.stonks.database.entities;
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -33,8 +34,13 @@ public class Classification {
         return ClassificationId;
     }
 
-    public void setClassificationId(int clasificationId) {
-        ClassificationId = clasificationId;
+    public void setClassificationId(int classificationId) {
+        ClassificationId = classificationId;
+    }
+
+    @NonNull
+    public String toString(){
+        return getName();
     }
 
 }

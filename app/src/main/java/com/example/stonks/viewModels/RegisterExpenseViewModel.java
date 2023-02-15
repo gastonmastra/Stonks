@@ -1,19 +1,27 @@
 package com.example.stonks.viewModels;
 
 import android.app.Application;
+import android.os.AsyncTask;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.stonks.database.AppDatabase;
 import com.example.stonks.database.entities.Classification;
 import com.example.stonks.database.entities.Movement;
 import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.repository.interfaces.IClassificationRepository;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
+import com.example.stonks.database.repository.interfaces.IWalletRepository;
+import com.example.stonks.database.repository.room.ClassificationRepositoryRoom;
 import com.example.stonks.database.repository.room.MovementRepositoryRoom;
+import com.example.stonks.database.repository.room.WalletRepositoryRoom;
 
 import java.util.Date;
+import java.util.List;
 
 public class RegisterExpenseViewModel extends AndroidViewModel {
     String Description;
@@ -21,22 +29,23 @@ public class RegisterExpenseViewModel extends AndroidViewModel {
     double Amount;
     Wallet Wallet;
     Date Date;
-    String[] Classifications = new String[]{
-            "Comida",
-            "Salida",
-            "Auto",
-            "Ropa"
-    };
     Classification Classification;
     IMovementRepository _movementRepository;
+    IClassificationRepository _classificationRepository;
+    IWalletRepository _walletRepository;
     AppDatabase db;
     private MutableLiveData<Movement> Movement;
+    private MutableLiveData<List<Classification>> Classifications;
 
 
     public RegisterExpenseViewModel(@NonNull Application application) {
         super(application);
-        db = AppDatabase.getInstance(application);
-        _movementRepository = MovementRepositoryRoom.getInstance(db.movementDao());
+        AsyncTask.execute(() -> {
+            db = AppDatabase.getInstance(application);
+            _movementRepository = MovementRepositoryRoom.getInstance(db.movementDao());
+            _classificationRepository = ClassificationRepositoryRoom.getInstance(db.classificationDao());
+            _walletRepository = WalletRepositoryRoom.getInstance(db.walletDao());
+        });
     }
 
     public MutableLiveData<Movement> getMovement(){
@@ -44,6 +53,10 @@ public class RegisterExpenseViewModel extends AndroidViewModel {
             Movement = new MutableLiveData<>();
         }
         return Movement;
+    }
+
+    public LiveData<List<Classification>> getClassifications(){
+        return _classificationRepository.getAllClassifications();
     }
 
     public void Register(String description, double amount){

@@ -15,13 +15,16 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.stonks.R;
+import com.example.stonks.database.entities.Classification;
 import com.example.stonks.viewModels.RegisterExpenseViewModel;
 import com.example.stonks.database.entities.Movement;
+
+import java.util.List;
 
 public class RegisterExpense extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText etDescription, etMount;
-    Spinner spinnerClasification;
+    Spinner spinnerClassification;
     String classification;
     Button btnRegister;
     RegisterExpenseViewModel Model;
@@ -30,12 +33,20 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_expense);
-        spinnerClasification = (Spinner) findViewById(R.id.spinClasification);
+        InitializeComponents();
+    }
+
+    private void InitializeComponents() {
+        spinnerClassification = (Spinner) findViewById(R.id.spinClasification);
         etDescription = (EditText) findViewById(R.id.etDescription);
         etMount = (EditText) findViewById(R.id.etMount);
         btnRegister = (Button) findViewById(R.id.btnRegisterExpense);
         btnRegister.setOnClickListener(this::Register);
         Model = new ViewModelProvider(this).get(RegisterExpenseViewModel.class);
+        SubscribeData();
+    }
+
+    private void SubscribeData() {
         final Observer<Movement> movement = new Observer<Movement>() {
             @Override
             public void onChanged(@Nullable final Movement movement) {
@@ -44,13 +55,22 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
             }
         };
         Model.getMovement().observe(this, movement);
+        final Observer<List<Classification>> classifications = new Observer<List<Classification>>() {
+            @Override
+            public void onChanged(List<Classification> classifications) {
+                showClassifications(classifications);
+            }
+        };
+        Model.getClassifications().observe(this, classifications);
     }
 
-    public void showClasifications(String[] clasifiactions){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.clasifications, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerClasification.setAdapter(adapter);
-        spinnerClasification.setOnItemSelectedListener(this);
+    public void showClassifications(List<Classification> classifications){
+        for (int i = 0; i < classifications.size(); i++){
+            Toast.makeText(this, i +  classifications.get(i).getName(), Toast.LENGTH_LONG).show();
+        }
+        ArrayAdapter adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, classifications);
+        spinnerClassification.setAdapter(adapter);
+        spinnerClassification.setOnItemSelectedListener(this);
     }
 
     private void showMovement(Movement movement){

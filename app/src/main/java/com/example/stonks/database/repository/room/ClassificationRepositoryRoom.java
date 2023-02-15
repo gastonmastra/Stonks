@@ -1,12 +1,14 @@
 package com.example.stonks.database.repository.room;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.stonks.database.daos.ClassificationDao;
 import com.example.stonks.database.entities.Classification;
-import com.example.stonks.database.repository.interfaces.IClasificationRepository;
+import com.example.stonks.database.repository.interfaces.IClassificationRepository;
 
 import java.util.List;
 
-public class ClassificationRepositoryRoom implements IClasificationRepository {
+public class ClassificationRepositoryRoom implements IClassificationRepository {
     private static ClassificationRepositoryRoom instance;
     private final ClassificationDao dao;
 
@@ -22,27 +24,27 @@ public class ClassificationRepositoryRoom implements IClasificationRepository {
     }
 
     @Override
-    public List<Classification> getAllClasifications() {
+    public LiveData<List<Classification>> getAllClassifications() {
         return dao.getClassifications();
     }
 
     @Override
-    public Classification getClasification(int clasificationId) {
-        return dao.getClassification(clasificationId);
+    public Classification getClassification(int classificationId) {
+        return dao.getClassification(classificationId);
     }
 
     @Override
-    public void insertClasification(Classification clasification) {
-        dao.insertClassification(clasification);
+    public void insertClassification(Classification classification) {
+        dao.insertClassification(classification);
     }
 
     @Override
-    public void deleteClasification(Classification clasification) {
-        dao.deleteClassification(clasification);
+    public void deleteClassification(Classification classification) {
+        dao.deleteClassification(classification);
     }
 
     @Override
-    public void updateClasification(Classification clasification) {
-        dao.updateClassification(clasification);
+    public void updateClassification(Classification classification) {
+        dao.updateClassification(classification);
     }
 }

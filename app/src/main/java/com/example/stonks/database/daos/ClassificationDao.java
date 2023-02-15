@@ -1,5 +1,6 @@
 package com.example.stonks.database.daos;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,7 +14,7 @@ import java.util.List;
 @Dao
 public interface ClassificationDao {
     @Query("SELECT * FROM Classifications")
-    List<Classification> getClassifications();
+    LiveData<List<Classification>> getClassifications();
     @Query("SELECT * FROM Classifications WHERE classification_id = :classificationId")
     Classification getClassification(int classificationId);
     @Insert

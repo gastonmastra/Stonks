@@ -1,10 +1,6 @@
 package com.example.stonks.database;
 
-import static com.example.stonks.database.Migrations.Migration_2_3;
-
 import android.content.Context;
-
-import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
@@ -31,12 +27,7 @@ import com.example.stonks.database.entities.Wallet;
                 User.class, Movement.class, Classification.class, FixedExpense.class,
                 FixedExpenseDetail.class, Person.class, Wallet.class
         },
-        version = 7,
-        exportSchema = true,
-        autoMigrations = {
-                @AutoMigration(from = 1, to = 2),
-                @AutoMigration(from = 3, to = 4, spec = Migrations.Migration_3_4.class),
-        }
+        version = 1
 )
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -45,9 +36,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context){
         if (Instance == null){
             Instance = Room.databaseBuilder(context, AppDatabase.class, "pruebaDb")
-                    .allowMainThreadQueries()
                     .fallbackToDestructiveMigration()
-                    .addMigrations(Migration_2_3)
                     .build();
         }
         return Instance;

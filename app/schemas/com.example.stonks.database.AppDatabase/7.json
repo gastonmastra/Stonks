@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 7,
-    "identityHash": "2259b28151d2e87af7dbe9261a6cd2d4",
+    "identityHash": "eeedfdde7f24c17749bb6493fd04f628",
     "entities": [
       {
         "tableName": "User",
@@ -188,7 +188,7 @@
       },
       {
         "tableName": "Fixed_Expense_Detail",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fixed_expense_detail_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Date` INTEGER, `DatefPayment` INTEGER, `Mount` REAL, `Payed` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`fixed_expense_detail_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Date` INTEGER, `DateOfPayment` INTEGER, `Mount` REAL, `Payed` INTEGER)",
         "fields": [
           {
             "fieldPath": "FixedExpenseDetailId",
@@ -203,8 +203,8 @@
             "notNull": false
           },
           {
-            "fieldPath": "DatefPayment",
-            "columnName": "DatefPayment",
+            "fieldPath": "DateOfPayment",
+            "columnName": "DateOfPayment",
             "affinity": "INTEGER",
             "notNull": false
           },
@@ -304,7 +304,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2259b28151d2e87af7dbe9261a6cd2d4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'eeedfdde7f24c17749bb6493fd04f628')"
     ]
   }
 }

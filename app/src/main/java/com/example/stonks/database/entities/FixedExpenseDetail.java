@@ -15,8 +15,7 @@ public class FixedExpenseDetail {
     private int FixedExpenseDetailId;
     private Date Date;
     @Nullable
-    private
-    Date DatefPayment;
+    private Date DateOfPayment;
     private Double Mount;
     private Boolean Payed;
 
@@ -31,12 +30,12 @@ public class FixedExpenseDetail {
     }
 
     @Nullable
-    public java.util.Date getDatefPayment() {
-        return DatefPayment;
+    public java.util.Date getDateOfPayment() {
+        return DateOfPayment;
     }
 
-    public void setDatefPayment(@Nullable java.util.Date datefPayment) {
-        DatefPayment = datefPayment;
+    public void setDateOfPayment(@Nullable java.util.Date dateOfPayment) {
+        DateOfPayment = dateOfPayment;
     }
 
     public Double getMount() {
