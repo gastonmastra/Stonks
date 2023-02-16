@@ -72,6 +72,10 @@ public class RegisterExpenseViewModel extends AndroidViewModel {
         return _classificationRepository.getAllClassifications();
     }
 
+    public List<Wallet> getWallets(){
+        return _walletRepository.getAllWallets();
+    }
+
     public void Register(String description, double amount, long classification){
         Description = description;
         Amount = amount;

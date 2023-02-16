@@ -1,5 +1,6 @@
 package com.example.stonks.database.entities;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -50,5 +51,10 @@ public class Wallet {
 
     public void setName(String name) {
         Name = name;
+    }
+
+    @NonNull
+    public String toString(){
+        return getName();
     }
 }

@@ -14,7 +14,7 @@ import com.example.stonks.database.entities.User;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnRegisterExpense;
+    Button btnRegisterExpense, btnRegisterWallet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +25,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void InitializeButtons(){
         btnRegisterExpense = (Button) findViewById(R.id.btnRegisterExpense);
         btnRegisterExpense.setOnClickListener(this);
+        btnRegisterWallet = (Button) findViewById(R.id.btnRegisterWallet);
+        btnRegisterWallet.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view){
         if (view.getId() == R.id.btnRegisterExpense) {
             Intent intent = new Intent(this, RegisterExpense.class);
+            startActivity(intent);
+        }else if(view.getId() == R.id.btnRegisterWallet){
+            Intent intent = new Intent(this, RegisterWallet.class);
             startActivity(intent);
         }
     }

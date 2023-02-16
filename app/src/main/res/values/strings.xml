@@ -2,14 +2,12 @@
     <string name="app_name">Stonks</string>
 
     <string name="registerExpense">Registrar gasto</string>
+    <string name="registerWallet">Registrar billetera</string>
+
     <string name="description">Descripción</string>
+    <string name="name">Nombre</string>
     <string name="mount">Monto</string>
+    <string name="initialAmount">Monto inicial</string>
     <string name="register">Registrar</string>
-    <string-array name="clasifications">
-        <item>Auto</item>
-        <item>Ropa</item>
-        <item>Comida</item>
-        <item>Salida</item>
-        <item>Otros</item>
-    </string-array>
+
 </resources>
