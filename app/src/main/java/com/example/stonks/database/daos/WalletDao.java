@@ -16,7 +16,7 @@ public interface WalletDao {
     @Query("SELECT * FROM Wallets")
     List<Wallet> getWallets();
     @Query("SELECT * FROM Wallets WHERE wallet_id = :walletId")
-    Wallet getWallet(int walletId);
+    Wallet getWallet(long walletId);
     @Insert
     void insertWallet(Wallet wallet);
     @Update

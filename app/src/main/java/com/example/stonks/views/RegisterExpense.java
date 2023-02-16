@@ -93,7 +93,11 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         String description = etDescription.getText().toString();
         double amount = Double.parseDouble(etMount.getText().toString());
         Classification classificationSelected = (Classification)spinnerClassification.getSelectedItem();
-        Model.Register(description, amount, classificationSelected.getClassificationId());
+        Wallet walletSelected = (Wallet)spinnerWallet.getSelectedItem();
+        Model.Register(description,
+                amount,
+                classificationSelected.getClassificationId(),
+                walletSelected.getWalletId());
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){

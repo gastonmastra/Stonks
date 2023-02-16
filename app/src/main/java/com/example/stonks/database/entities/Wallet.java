@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 @Entity(tableName = "Wallets")
 public class Wallet {
 
@@ -20,12 +22,15 @@ public class Wallet {
         return getMoney();
     }
 
-    public Movement createMovement(String description, double amount, long classificationId){
+    public Movement createMovement(String description, double amount, long classificationId, long walletId){
         Movement movement =  new Movement();
         movement.setDescription(description);
         movement.setAmount(amount);
         movement.setClassificationId(classificationId);
-
+        movement.setWalletId(walletId);
+        movement.setBeforeAmount(getMoney());
+        movement.setDate(new Date());
+        setMoney(getMoney() - amount);
         return movement;
     }
 

@@ -27,7 +27,7 @@ public class WalletRepositoryRoom implements IWalletRepository {
     }
 
     @Override
-    public Wallet getWallet(int walletId) {
+    public Wallet getWallet(long walletId) {
         return dao.getWallet(walletId);
     }
 

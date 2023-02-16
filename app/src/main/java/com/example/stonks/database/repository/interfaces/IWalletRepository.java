@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IWalletRepository {
     List<Wallet> getAllWallets();
-    Wallet getWallet(int walletId);
+    Wallet getWallet(long walletId);
     void insertWallet(Wallet wallet);
     void updateWallet(Wallet wallet);
     void deleteWallet(Wallet wallet);

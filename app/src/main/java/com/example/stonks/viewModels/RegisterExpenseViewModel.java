@@ -55,20 +55,6 @@ public class RegisterExpenseViewModel extends AndroidViewModel {
     }
 
     public List<Classification> getClassifications(){
-        List<String> classific = new ArrayList<String>();
-        classific.add("Bebida");
-        classific.add("Comida");
-        classific.add("Salida");
-        classific.add("Auto");
-        classific.add("Sueldo");
-
-        if(_classificationRepository.getAllClassifications().size() == 0){
-            for (int i = 0; i < classific.size(); i++){
-                Classification classification = new Classification();
-                classification.setName(classific.get(i));
-                _classificationRepository.insertClassification(classification);
-            }
-        }
         return _classificationRepository.getAllClassifications();
     }
 
@@ -76,12 +62,13 @@ public class RegisterExpenseViewModel extends AndroidViewModel {
         return _walletRepository.getAllWallets();
     }
 
-    public void Register(String description, double amount, long classification){
+    public void Register(String description, double amount, long classification, long wallet){
         Description = description;
         Amount = amount;
         validateInfo();
-        Wallet = new Wallet();
-        Movement movement = Wallet.createMovement(Description, Amount, classification);
+        Wallet = _walletRepository.getWallet(wallet);
+        Movement movement = Wallet.createMovement(Description, Amount, classification, wallet);
+        _walletRepository.updateWallet(Wallet);
         Movement.postValue(movement);
         _movementRepository.insertMovement(movement);
     }
