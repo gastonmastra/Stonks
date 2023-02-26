@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.firebase;
 
-import com.example.stonks.database.entities.User;
+import com.example.stonks.database.repository.room.entities.User;
 import com.example.stonks.database.repository.interfaces.IUserRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.firebase;
 
-import com.example.stonks.database.entities.FixedExpenseDetail;
+import com.example.stonks.database.repository.room.entities.FixedExpenseDetail;
 import com.example.stonks.database.repository.interfaces.IFixedExpenseDetailRepository;
 
 public class FixedExpenseDetailFirebase implements IFixedExpenseDetailRepository {

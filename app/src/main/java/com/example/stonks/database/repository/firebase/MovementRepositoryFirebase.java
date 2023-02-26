@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.firebase;
 
-import com.example.stonks.database.entities.Movement;
+import com.example.stonks.database.repository.room.entities.Movement;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
 
 import java.util.List;

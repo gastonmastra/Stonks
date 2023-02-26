@@ -1,11 +1,13 @@
 package com.example.stonks.database;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class Firebase {
-    private static Firebase instance;
+    private static FirebaseFirestore instance;
     private Firebase() { }
-    public static Firebase getInstance(){
+    public static FirebaseFirestore getInstance(){
         if (instance == null){
-            instance = new Firebase();
+            instance = FirebaseFirestore.getInstance();
         }
         return instance;
     }

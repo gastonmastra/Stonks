@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.interfaces;
 
-import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.repository.room.entities.Wallet;
 
 import java.util.List;
 

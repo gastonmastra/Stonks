@@ -1,7 +1,7 @@
 package com.example.stonks.database.repository.room;
 
-import com.example.stonks.database.daos.WalletDao;
-import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.repository.room.daos.WalletDao;
+import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 
 import java.util.List;

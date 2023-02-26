@@ -6,19 +6,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.stonks.database.AppDatabase;
-import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
+import com.example.stonks.database.repository.room.AppDatabase;
+import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 import com.example.stonks.database.repository.room.WalletRepositoryRoom;
 
 public class RegisterWalletViewModel extends AndroidViewModel {
-    AppDatabase db;
     IWalletRepository walletRepository;
 
     public RegisterWalletViewModel(@NonNull Application application) {
         super(application);
-        db = AppDatabase.getInstance(application.getApplicationContext());
-        walletRepository = WalletRepositoryRoom.getInstance(db.walletDao());
+        walletRepository = new WalletRepositoryFirebase();
     }
 
     public void register(String name, long amount){

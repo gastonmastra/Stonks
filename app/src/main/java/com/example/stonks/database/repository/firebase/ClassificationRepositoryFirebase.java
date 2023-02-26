@@ -1,9 +1,16 @@
 package com.example.stonks.database.repository.firebase;
 
-import com.example.stonks.database.entities.Classification;
-import com.example.stonks.database.repository.interfaces.IClassificationRepository;
-import com.example.stonks.database.repository.room.ClassificationRepositoryRoom;
+import androidx.annotation.NonNull;
 
+import com.example.stonks.database.Firebase;
+import com.example.stonks.database.repository.room.entities.Classification;
+import com.example.stonks.database.repository.interfaces.IClassificationRepository;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClassificationRepositoryFirebase implements IClassificationRepository {
@@ -18,7 +25,19 @@ public class ClassificationRepositoryFirebase implements IClassificationReposito
     }
     @Override
     public List<Classification> getAllClassifications() {
-        return null;
+        List<Classification> classifications = new ArrayList<>();
+        Firebase.getInstance().collection("classifications").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for (QueryDocumentSnapshot document : task.getResult()){
+                                classifications.add(document.toObject(Classification.class));
+                            }
+                        }
+                    }
+                });
+        return classifications;
     }
 
     @Override

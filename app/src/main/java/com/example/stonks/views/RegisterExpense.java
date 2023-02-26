@@ -1,6 +1,5 @@
 package com.example.stonks.views;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,10 +14,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.stonks.R;
-import com.example.stonks.database.entities.Classification;
-import com.example.stonks.database.entities.Wallet;
+import com.example.stonks.database.repository.room.entities.Classification;
+import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.viewModels.RegisterExpenseViewModel;
-import com.example.stonks.database.entities.Movement;
+import com.example.stonks.database.repository.room.entities.Movement;
 
 import java.util.List;
 
@@ -49,28 +48,12 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     }
 
     private void SubscribeData() {
-        final Observer<Movement> movement = new Observer<Movement>() {
-            @Override
-            public void onChanged(@Nullable final Movement movement) {
-                if (movement != null)
-                    showMovement(movement);
-            }
-        };
-        Model.getMovement().observe(this, movement);
-        final Observer<List<Classification>> classifications = new Observer<List<Classification>>() {
-            @Override
-            public void onChanged(List<Classification> classifications) {
-                showClassifications(classifications);
-            }
-        };
-        showClassifications(Model.getClassifications());
-        final Observer<List<Wallet>> wallets = new Observer<List<Wallet>>() {
-            @Override
-            public void onChanged(List<Wallet> wallets) {
-                showWallets(wallets);
-            }
-        };
-        showWallets(Model.getWallets());
+        final Observer<Movement> movement = this::showMovement;
+        //Model.getMovement().observe(this, movement);
+        final Observer<List<Classification>> classifications = this::showClassifications;
+        Model.getClassifications().observe(this, classifications);
+        final Observer<List<Wallet>> wallets = this::showWallets;
+        Model.getWallets().observe(this, wallets);
     }
 
     public void showClassifications(List<Classification> classifications){
@@ -94,7 +77,7 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         double amount = Double.parseDouble(etMount.getText().toString());
         Classification classificationSelected = (Classification)spinnerClassification.getSelectedItem();
         Wallet walletSelected = (Wallet)spinnerWallet.getSelectedItem();
-        Model.Register(description,
+        Model.register(description,
                 amount,
                 classificationSelected.getClassificationId(),
                 walletSelected.getWalletId());

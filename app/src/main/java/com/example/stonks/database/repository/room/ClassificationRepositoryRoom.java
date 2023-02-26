@@ -1,9 +1,7 @@
 package com.example.stonks.database.repository.room;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.stonks.database.daos.ClassificationDao;
-import com.example.stonks.database.entities.Classification;
+import com.example.stonks.database.repository.room.daos.ClassificationDao;
+import com.example.stonks.database.repository.room.entities.Classification;
 import com.example.stonks.database.repository.interfaces.IClassificationRepository;
 
 import java.util.List;

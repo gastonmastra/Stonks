@@ -1,4 +1,4 @@
-package com.example.stonks.database.daos;
+package com.example.stonks.database.repository.room.daos;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.stonks.database.entities.FixedExpenseDetail;
+import com.example.stonks.database.repository.room.entities.FixedExpenseDetail;
 
 @Dao
 public interface FixedExpenseDetailDao {

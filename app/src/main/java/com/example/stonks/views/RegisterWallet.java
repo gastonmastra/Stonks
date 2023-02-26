@@ -23,7 +23,6 @@ public class RegisterWallet extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_wallet);
         model = new ViewModelProvider(this).get(RegisterWalletViewModel.class);
-
         InitializeButtons();
 
     }
@@ -34,7 +33,6 @@ public class RegisterWallet extends AppCompatActivity implements View.OnClickLis
         btnRegisterWallet = findViewById(R.id.btnRegisterWallet);
         btnRegisterWallet.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View view){
         String txtName = name.getText().toString();

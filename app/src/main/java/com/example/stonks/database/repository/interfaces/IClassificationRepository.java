@@ -1,8 +1,6 @@
 package com.example.stonks.database.repository.interfaces;
 
-import androidx.lifecycle.LiveData;
-
-import com.example.stonks.database.entities.Classification;
+import com.example.stonks.database.repository.room.entities.Classification;
 
 import java.util.List;
 

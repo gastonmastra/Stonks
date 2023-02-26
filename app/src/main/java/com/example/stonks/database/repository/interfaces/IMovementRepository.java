@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.interfaces;
 
-import com.example.stonks.database.entities.Movement;
+import com.example.stonks.database.repository.room.entities.Movement;
 
 import java.util.List;
 

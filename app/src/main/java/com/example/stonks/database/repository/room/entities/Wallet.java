@@ -1,4 +1,4 @@
-package com.example.stonks.database.entities;
+package com.example.stonks.database.repository.room.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -12,9 +12,9 @@ public class Wallet {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "wallet_id")
-    public int WalletId;
-    public double Money;
-    public String Name;
+    public int walletId;
+    public double money;
+    public String name;
 
     public Wallet() { }
 
@@ -35,27 +35,27 @@ public class Wallet {
     }
 
     public int getWalletId() {
-        return WalletId;
+        return walletId;
     }
 
     public void setWalletId(int walletId) {
-        WalletId = walletId;
+        this.walletId = walletId;
     }
 
     public double getMoney() {
-        return Money;
+        return money;
     }
 
     public void setMoney(double money) {
-        Money = money;
+        this.money = money;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     @NonNull
