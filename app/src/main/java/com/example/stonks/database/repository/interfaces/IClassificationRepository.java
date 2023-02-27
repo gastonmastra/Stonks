@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IClassificationRepository {
     List<Classification> getAllClassifications();
-    Classification getClassification(int classificationId);
+    Classification getClassification(String name);
     void insertClassification(Classification classification);
     void deleteClassification(Classification classification);
     void updateClassification(Classification classification);

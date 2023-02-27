@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "2e2613ebe18a6f260f67188083f285f1",
+    "identityHash": "f439fb85245631e8682167557d00397c",
     "entities": [
       {
         "tableName": "User",
@@ -38,7 +38,7 @@
       },
       {
         "tableName": "Movements",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movement_id` INTEGER PRIMARY KEY AUTOINCREMENT, `wallet_id` INTEGER, `classification_id` INTEGER DEFAULT NULL, `Description` TEXT, `Debt` INTEGER NOT NULL, `Amount` REAL NOT NULL, `BeforeAmount` REAL NOT NULL, `Date` INTEGER, FOREIGN KEY(`wallet_id`) REFERENCES `Wallets`(`wallet_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`classification_id`) REFERENCES `Classifications`(`classification_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`movement_id` INTEGER PRIMARY KEY AUTOINCREMENT, `wallet_id` INTEGER, `classification_id` INTEGER DEFAULT NULL, `Description` TEXT, `Debt` INTEGER NOT NULL, `Amount` REAL NOT NULL, `BeforeAmount` REAL NOT NULL, `EntryId` TEXT, `Date` INTEGER, FOREIGN KEY(`wallet_id`) REFERENCES `Wallets`(`wallet_id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`classification_id`) REFERENCES `Classifications`(`classification_id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "MovementId",
@@ -82,6 +82,12 @@
             "columnName": "BeforeAmount",
             "affinity": "REAL",
             "notNull": true
+          },
+          {
+            "fieldPath": "EntryId",
+            "columnName": "EntryId",
+            "affinity": "TEXT",
+            "notNull": false
           },
           {
             "fieldPath": "Date",
@@ -270,7 +276,7 @@
       },
       {
         "tableName": "Wallets",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`wallet_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `money` REAL NOT NULL, `name` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`wallet_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `money` REAL NOT NULL, `name` TEXT, `entryId` TEXT)",
         "fields": [
           {
             "fieldPath": "walletId",
@@ -289,6 +295,12 @@
             "columnName": "name",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "entryId",
+            "columnName": "entryId",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -304,7 +316,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2e2613ebe18a6f260f67188083f285f1')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f439fb85245631e8682167557d00397c')"
     ]
   }
 }

@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class RegisterExpenseViewModel extends AndroidViewModel {
+public class RegisterExpenseViewModel extends AndroidViewModel implements WalletRepositoryFirebase.FirebaseCallback {
     String Description;
     double Amount;
     Wallet Wallet;
@@ -80,13 +80,19 @@ public class RegisterExpenseViewModel extends AndroidViewModel {
         return wallets;
     }
 
-    public void register(String description, double amount, long classification, long wallet){
+    public void register(String description, double amount, Classification classification, Wallet wallet){
         Description = description;
         Amount = amount;
-        Wallet = _walletRepository.getWallet(wallet);
-        Movement movement = Wallet.createMovement(Description, Amount, classification, wallet);
-        _walletRepository.updateWallet(Wallet);
+
+        //_walletRepository.getWallet(walletName, this);
+        //Classification classification = _classificationRepository.getClassification(classificationName);
+        Movement movement = wallet.createMovement(Description, Amount, classification);
+        _walletRepository.updateWallet(wallet);
         _movementRepository.insertMovement(movement);
     }
 
+    @Override
+    public void getWallet(com.example.stonks.database.repository.room.entities.Wallet wallet) {
+        Wallet =  wallet;
+    }
 }

@@ -6,21 +6,22 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.stonks.database.Firebase;
+import com.example.stonks.database.repository.room.entities.Classification;
 import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.Source;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WalletRepositoryFirebase implements IWalletRepository {
+    private final CollectionReference walletCollection = FirebaseFirestore.getInstance()
+            .collection("wallets");
     private static WalletRepositoryFirebase instance;
 
     public static WalletRepositoryFirebase getInstance(){
@@ -32,16 +33,13 @@ public class WalletRepositoryFirebase implements IWalletRepository {
     @Override
     public List<Wallet> getAllWallets() {
         List<Wallet> wallets = new ArrayList<>();
-        Firebase.getInstance().collection("wallets")
-                .get()
+        walletCollection.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot documento : task.getResult()){
                                 wallets.add(documento.toObject(Wallet.class));
-                                Object data = documento.getData();
-                                Object object = documento.toObject(Wallet.class);
                             }
                         }
                         else{
@@ -53,35 +51,30 @@ public class WalletRepositoryFirebase implements IWalletRepository {
     }
 
     @Override
-    public Wallet getWallet(long walletId) {
+    public void getWallet(String name, FirebaseCallback callback) {
         Wallet wallet = new Wallet();
-        FirebaseFirestore.getInstance().collection("wallets")
-                .whereEqualTo("id",walletId).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        wallet.setWalletId(queryDocumentSnapshots.toObjects(Wallet.class).get(0)
-                                .getWalletId());
-                        wallet.setName(queryDocumentSnapshots.toObjects(Wallet.class).get(0)
-                                .getName());
-                    }
+        walletCollection.document(name).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    callback.getWallet(documentSnapshot.toObject(Wallet.class));
                 });
-        return wallet;
+    }
+
+    public interface FirebaseCallback{
+        void getWallet(Wallet wallet);
     }
 
     @Override
     public void insertWallet(Wallet wallet) {
-        FirebaseFirestore.getInstance().collection("wallets").document(wallet.getName())
-                .set(wallet);
+        walletCollection.document(wallet.getName()).set(wallet);
     }
 
     @Override
     public void updateWallet(Wallet wallet) {
-
+        walletCollection.document(wallet.getName()).set(wallet);
     }
 
     @Override
     public void deleteWallet(Wallet wallet) {
-
+        walletCollection.document(wallet.getName()).delete();
     }
 }

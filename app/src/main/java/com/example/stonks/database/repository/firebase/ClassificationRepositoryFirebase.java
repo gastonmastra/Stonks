@@ -41,7 +41,7 @@ public class ClassificationRepositoryFirebase implements IClassificationReposito
     }
 
     @Override
-    public Classification getClassification(int classificationId) {
+    public Classification getClassification(String name) {
         return null;
     }
 

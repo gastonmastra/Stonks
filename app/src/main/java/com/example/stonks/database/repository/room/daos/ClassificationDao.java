@@ -14,8 +14,8 @@ import java.util.List;
 public interface ClassificationDao {
     @Query("SELECT * FROM Classifications")
     List<Classification> getClassifications();
-    @Query("SELECT * FROM Classifications WHERE classification_id = :classificationId")
-    Classification getClassification(int classificationId);
+    @Query("SELECT * FROM Classifications WHERE name = :name")
+    Classification getClassification(String name);
     @Insert
     void insertClassification(Classification classification);
     @Delete

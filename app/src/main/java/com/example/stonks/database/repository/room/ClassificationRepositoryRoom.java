@@ -27,8 +27,8 @@ public class ClassificationRepositoryRoom implements IClassificationRepository {
     }
 
     @Override
-    public Classification getClassification(int classificationId) {
-        return dao.getClassification(classificationId);
+    public Classification getClassification(String name) {
+        return dao.getClassification(name);
     }
 
     @Override

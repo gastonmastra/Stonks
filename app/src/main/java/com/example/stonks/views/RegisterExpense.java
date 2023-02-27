@@ -79,8 +79,8 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         Wallet walletSelected = (Wallet)spinnerWallet.getSelectedItem();
         Model.register(description,
                 amount,
-                classificationSelected.getClassificationId(),
-                walletSelected.getWalletId());
+                classificationSelected,
+                walletSelected);
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){

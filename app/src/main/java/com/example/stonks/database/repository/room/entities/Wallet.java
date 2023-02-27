@@ -10,11 +10,11 @@ import java.util.Date;
 @Entity(tableName = "Wallets")
 public class Wallet {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "wallet_id")
-    public int walletId;
-    public double money;
-    public String name;
+    //@PrimaryKey(autoGenerate = true)
+    //@ColumnInfo(name = "wallet_id")
+    private int walletId;
+    private double money;
+    private String name;
 
     public Wallet() { }
 
@@ -22,14 +22,14 @@ public class Wallet {
         return getMoney();
     }
 
-    public Movement createMovement(String description, double amount, long classificationId, long walletId){
+    public Movement createMovement(String description, double amount, Classification classification){
         Movement movement =  new Movement();
         movement.setDescription(description);
         movement.setAmount(amount);
-        movement.setClassificationId(classificationId);
-        movement.setWalletId(walletId);
+        movement.setWallet(this);
         movement.setBeforeAmount(getMoney());
         movement.setDate(new Date());
+        movement.setClassification(classification);
         setMoney(getMoney() - amount);
         return movement;
     }
@@ -62,4 +62,5 @@ public class Wallet {
     public String toString(){
         return getName();
     }
+
 }

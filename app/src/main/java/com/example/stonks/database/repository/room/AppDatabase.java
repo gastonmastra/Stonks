@@ -22,14 +22,14 @@ import com.example.stonks.database.repository.room.entities.Person;
 import com.example.stonks.database.repository.room.entities.User;
 import com.example.stonks.database.repository.room.entities.Wallet;
 
-@Database(
-        entities = {
-                User.class, Movement.class, Classification.class, FixedExpense.class,
-                FixedExpenseDetail.class, Person.class, Wallet.class
-        },
-        version = 1
-)
-@TypeConverters({Converters.class})
+//@Database(
+//        entities = {
+//                User.class, Movement.class, Classification.class, FixedExpense.class,
+//                FixedExpenseDetail.class, Person.class, Wallet.class
+//        },
+//        version = 1
+//)
+//@TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase Instance;
 
