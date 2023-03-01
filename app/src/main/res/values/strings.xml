@@ -3,6 +3,7 @@
 
     <string name="registerExpense">Registrar gasto</string>
     <string name="registerWallet">Registrar billetera</string>
+    <string name="viewMovements">Ver gastos</string>
 
     <string name="description">Descripción</string>
     <string name="name">Nombre</string>

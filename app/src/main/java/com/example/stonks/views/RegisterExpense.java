@@ -48,8 +48,6 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     }
 
     private void SubscribeData() {
-        final Observer<Movement> movement = this::showMovement;
-        //Model.getMovement().observe(this, movement);
         final Observer<List<Classification>> classifications = this::showClassifications;
         Model.getClassifications().observe(this, classifications);
         final Observer<List<Wallet>> wallets = this::showWallets;
@@ -67,11 +65,6 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
         spinnerWallet.setAdapter(adapter);
         spinnerWallet.setOnItemSelectedListener(this);
     }
-
-    private void showMovement(Movement movement){
-        Toast.makeText(this, "Movimiento " + movement.getDescription() + " a $" + movement.getAmount() + " creado con éxito.", Toast.LENGTH_LONG).show();
-    }
-
     private void Register(View view){
         String description = etDescription.getText().toString();
         double amount = Double.parseDouble(etMount.getText().toString());

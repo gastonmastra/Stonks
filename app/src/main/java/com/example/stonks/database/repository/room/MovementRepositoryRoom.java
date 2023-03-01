@@ -1,5 +1,7 @@
 package com.example.stonks.database.repository.room;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.stonks.database.repository.room.daos.MovementDao;
 import com.example.stonks.database.repository.room.entities.Movement;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
@@ -22,8 +24,8 @@ public class MovementRepositoryRoom implements IMovementRepository {
     }
 
     @Override
-    public List<Movement> getAllMovements() {
-        return dao.getMovements();
+    public MutableLiveData<List<Movement>> getAllMovements() {
+        return null;
     }
 
     @Override

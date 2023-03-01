@@ -1,12 +1,14 @@
 package com.example.stonks.database.repository.firebase;
 
-import androidx.annotation.NonNull;
+import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
+
+import android.util.Log;
+
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.stonks.database.repository.room.entities.Movement;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,17 +29,14 @@ public class MovementRepositoryFirebase implements IMovementRepository {
         return instance;
     }
     @Override
-    public List<Movement> getAllMovements() {
-        List<Movement> movements = new ArrayList<>();
-        movementsCollection.get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (QueryDocumentSnapshot document: queryDocumentSnapshots){
-                            movements.add(document.toObject(Movement.class));
-                        }
-                    }
-                });
+    public MutableLiveData<List<Movement>> getAllMovements() {
+        MutableLiveData<List<Movement>> movements = new MutableLiveData<>();
+        movementsCollection.addSnapshotListener(((value, error) -> {
+            if (error != null)
+                Log.w(TAG, "Listed failed", error);
+            if (value != null)
+                movements.setValue(value.toObjects(Movement.class));
+        }));
         return movements;
     }
 
