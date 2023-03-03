@@ -5,8 +5,8 @@ import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 
-import com.example.stonks.database.repository.room.entities.Classification;
 import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,22 +31,14 @@ public class WalletRepositoryFirebase implements IWalletRepository {
         return instance;
     }
     @Override
-    public List<Wallet> getAllWallets() {
-        List<Wallet> wallets = new ArrayList<>();
-        walletCollection.get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot documento : task.getResult()){
-                                wallets.add(documento.toObject(Wallet.class));
-                            }
-                        }
-                        else{
-                            Log.d(TAG, "Error al obtener los datos, error: " + task.getException());
-                        }
-                    }
-                });
+    public MutableLiveData<List<Wallet>> getAllWallets() {
+        MutableLiveData<List<Wallet>> wallets = new MutableLiveData<>();
+        walletCollection.addSnapshotListener((value, error) -> {
+            if (error != null)
+                Log.w(TAG, "Listed failed", error);
+            if (value != null)
+                wallets.setValue(value.toObjects(Wallet.class));
+        });
         return wallets;
     }
 

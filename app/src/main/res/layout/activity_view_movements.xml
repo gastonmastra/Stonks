@@ -8,9 +8,19 @@
     android:background="@drawable/background"
     tools:context=".views.ViewMovements">
 
+    <Spinner
+        android:id="@+id/spinWallets"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="5"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <ListView
         android:id="@+id/lvMovements"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true" />
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_weight="95"/>
 </LinearLayout>

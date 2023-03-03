@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.stonks.database.repository.room.entities.Movement;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
+import com.example.stonks.database.repository.room.entities.Wallet;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -21,6 +22,7 @@ import java.util.List;
 public class MovementRepositoryFirebase implements IMovementRepository {
     private final CollectionReference movementsCollection = FirebaseFirestore.getInstance()
             .collection("movements");
+    private MutableLiveData<List<Movement>> movements = new MutableLiveData<>();
     private static MovementRepositoryFirebase instance;
     public static MovementRepositoryFirebase getInstance(){
         if (instance == null){
@@ -30,7 +32,6 @@ public class MovementRepositoryFirebase implements IMovementRepository {
     }
     @Override
     public MutableLiveData<List<Movement>> getAllMovements() {
-        MutableLiveData<List<Movement>> movements = new MutableLiveData<>();
         movementsCollection.addSnapshotListener(((value, error) -> {
             if (error != null)
                 Log.w(TAG, "Listed failed", error);
@@ -68,5 +69,19 @@ public class MovementRepositoryFirebase implements IMovementRepository {
     @Override
     public void deleteMovement(Movement movement) {
         movementsCollection.document(movement.getEntryId()).delete();
+    }
+
+    @Override
+    public void getMovementOfWallet(Wallet wallet) {
+        movementsCollection.
+                whereEqualTo("wallet.name", wallet.getName())
+                .addSnapshotListener( ((value, error) -> {
+                    if (error != null){
+                        Log.w(TAG, "Listed failed", error);
+                    }
+                    if (value != null){
+                        movements.setValue(value.toObjects(Movement.class));
+                    }
+                }));
     }
 }
