@@ -1,13 +1,12 @@
-package com.example.stonks.database.daos;
+package com.example.stonks.database.repository.room.daos;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.stonks.database.entities.Classification;
+import com.example.stonks.database.repository.room.entities.Classification;
 
 import java.util.List;
 
@@ -15,8 +14,8 @@ import java.util.List;
 public interface ClassificationDao {
     @Query("SELECT * FROM Classifications")
     List<Classification> getClassifications();
-    @Query("SELECT * FROM Classifications WHERE classification_id = :classificationId")
-    Classification getClassification(int classificationId);
+    @Query("SELECT * FROM Classifications WHERE name = :name")
+    Classification getClassification(String name);
     @Insert
     void insertClassification(Classification classification);
     @Delete

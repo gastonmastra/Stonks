@@ -6,15 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.stonks.R;
-import com.example.stonks.database.entities.User;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnRegisterExpense, btnRegisterWallet;
+    Button btnRegisterExpense, btnRegisterWallet, btnViewMovements;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRegisterExpense.setOnClickListener(this);
         btnRegisterWallet = (Button) findViewById(R.id.btnRegisterWallet);
         btnRegisterWallet.setOnClickListener(this);
+        btnViewMovements = (Button) findViewById(R.id.btnViewMovements);
+        btnViewMovements.setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }else if(view.getId() == R.id.btnRegisterWallet){
             Intent intent = new Intent(this, RegisterWallet.class);
+            startActivity(intent);
+        }else if(view.getId() == R.id.btnViewMovements){
+            Intent intent = new Intent(this, ViewMovements.class);
             startActivity(intent);
         }
     }

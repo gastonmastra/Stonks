@@ -1,8 +1,11 @@
 package com.example.stonks.database.repository.room;
 
-import com.example.stonks.database.daos.MovementDao;
-import com.example.stonks.database.entities.Movement;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.stonks.database.repository.room.daos.MovementDao;
+import com.example.stonks.database.repository.room.entities.Movement;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
+import com.example.stonks.database.repository.room.entities.Wallet;
 
 import java.util.List;
 
@@ -22,8 +25,8 @@ public class MovementRepositoryRoom implements IMovementRepository {
     }
 
     @Override
-    public List<Movement> getAllMovements() {
-        return dao.getMovements();
+    public MutableLiveData<List<Movement>> getAllMovements() {
+        return null;
     }
 
     @Override
@@ -44,5 +47,10 @@ public class MovementRepositoryRoom implements IMovementRepository {
     @Override
     public void deleteMovement(Movement movement) {
         dao.deleteMovement(movement);
+    }
+
+    @Override
+    public void getMovementOfWallet(Wallet wallet) {
+
     }
 }

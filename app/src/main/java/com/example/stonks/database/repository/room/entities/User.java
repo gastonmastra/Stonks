@@ -1,4 +1,4 @@
-package com.example.stonks.database.entities;
+package com.example.stonks.database.repository.room.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

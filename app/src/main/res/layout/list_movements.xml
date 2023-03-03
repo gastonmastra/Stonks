@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".views.ViewMovements"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="25"
+        android:layout_height="80dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center|start"
+            android:layout_weight="50"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="Fecha"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/txtHour"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center|start"
+            android:layout_weight="50"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:text="Hora"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="45"
+        android:layout_height="80dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtMovement"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center|start"
+            android:layout_weight="50"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:gravity="center|start"
+            android:text="Description"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/txtWallet"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:textColor="@color/white"
+            android:gravity="center|start"
+            android:text="Wallet"
+            android:textSize="16dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="30"
+        android:layout_height="80dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtAmount"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="start"
+            android:layout_weight="50"
+            android:textColor="@color/white"
+            android:gravity="center|start"
+            android:text="Amount"
+            android:textSize="16dp" />
+        <TextView
+            android:id="@+id/txtAmountWallet"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="start"
+            android:layout_weight="50"
+            android:textColor="@color/white"
+            android:gravity="center|start"
+            android:text="Amount Wallet"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

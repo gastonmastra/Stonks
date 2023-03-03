@@ -1,7 +1,10 @@
 package com.example.stonks.database.repository.room;
 
-import com.example.stonks.database.daos.WalletDao;
-import com.example.stonks.database.entities.Wallet;
+import androidx.lifecycle.MutableLiveData;
+
+import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
+import com.example.stonks.database.repository.room.daos.WalletDao;
+import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 
 import java.util.List;
@@ -22,13 +25,12 @@ public class WalletRepositoryRoom implements IWalletRepository {
     }
 
     @Override
-    public List<Wallet> getAllWallets() {
-        return dao.getWallets();
+    public MutableLiveData<List<Wallet>> getAllWallets() {
+        return null;
     }
 
     @Override
-    public Wallet getWallet(int walletId) {
-        return dao.getWallet(walletId);
+    public void getWallet(String name, WalletRepositoryFirebase.FirebaseCallback callback) {
     }
 
     @Override

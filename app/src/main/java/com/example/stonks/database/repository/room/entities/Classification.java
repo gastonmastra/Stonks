@@ -1,4 +1,4 @@
-package com.example.stonks.database.entities;
+package com.example.stonks.database.repository.room.entities;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -8,34 +8,34 @@ import androidx.room.PrimaryKey;
 public class Classification {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "classification_id")
-    public int ClassificationId;
-    public String Description;
-    public String Name;
+    public int classificationId;
+    public String description;
+    public String name;
 
     public Classification(){}
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public int getClassificationId() {
-        return ClassificationId;
+        return classificationId;
     }
 
     public void setClassificationId(int classificationId) {
-        ClassificationId = classificationId;
+        this.classificationId = classificationId;
     }
 
     @NonNull
