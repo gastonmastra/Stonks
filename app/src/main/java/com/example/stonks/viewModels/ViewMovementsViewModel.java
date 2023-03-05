@@ -63,7 +63,7 @@ public class ViewMovementsViewModel extends AndroidViewModel {
         return wallets;
     }
 
-    public void filterByWallet(Wallet wallet) {
-        this.movementsService.getMovementsOfWallet(wallet);
+    public MutableLiveData<List<Movement>> filterByWallet(Wallet wallet) {
+        return this.movementsService.getMovementsOfWallet(wallet);
     }
 }

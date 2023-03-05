@@ -42,7 +42,7 @@ public class MovementsService implements IMovementsService {
     }
 
     @Override
-    public void getMovementsOfWallet(Wallet wallet) {
-        movementRepository.getMovementOfWallet(wallet);
+    public MutableLiveData<List<Movement>> getMovementsOfWallet(Wallet wallet) {
+        return movementRepository.getMovementOfWallet(wallet);
     }
 }

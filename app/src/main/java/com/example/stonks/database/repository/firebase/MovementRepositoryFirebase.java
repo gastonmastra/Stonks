@@ -13,16 +13,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class MovementRepositoryFirebase implements IMovementRepository {
     private final CollectionReference movementsCollection = FirebaseFirestore.getInstance()
             .collection("movements");
-    private MutableLiveData<List<Movement>> movements = new MutableLiveData<>();
+    private final MutableLiveData<List<Movement>> movements = new MutableLiveData<>();
     private static MovementRepositoryFirebase instance;
     public static MovementRepositoryFirebase getInstance(){
         if (instance == null){
@@ -44,10 +40,7 @@ public class MovementRepositoryFirebase implements IMovementRepository {
     @Override
     public Movement getMovement(int movementId) {
         movementsCollection.document(Long.toString(movementId)).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    }
+                .addOnSuccessListener(documentSnapshot -> {
                 });
         return null;
     }
@@ -72,7 +65,7 @@ public class MovementRepositoryFirebase implements IMovementRepository {
     }
 
     @Override
-    public void getMovementOfWallet(Wallet wallet) {
+    public MutableLiveData<List<Movement>> getMovementOfWallet(Wallet wallet) {
         movementsCollection.
                 whereEqualTo("wallet.name", wallet.getName())
                 .addSnapshotListener( ((value, error) -> {
@@ -83,5 +76,6 @@ public class MovementRepositoryFirebase implements IMovementRepository {
                         movements.setValue(value.toObjects(Movement.class));
                     }
                 }));
+        return movements;
     }
 }
