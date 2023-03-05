@@ -7,10 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
-import com.example.stonks.database.repository.room.AppDatabase;
 import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
-import com.example.stonks.database.repository.room.WalletRepositoryRoom;
 
 public class RegisterWalletViewModel extends AndroidViewModel {
     IWalletRepository walletRepository;
@@ -21,18 +19,22 @@ public class RegisterWalletViewModel extends AndroidViewModel {
     }
 
     public void register(String name, long amount){
-        String txtResult;
         if (validateInfo(name)){
             Wallet newWallet = new Wallet();
             newWallet.setName(name);
             newWallet.setMoney(amount);
-            walletRepository.insertWallet(newWallet);
-            txtResult = "Se insertó correctamente la billetera " + name;
+            walletRepository.insertWallet(newWallet, this::showResult);
         }
         else {
-            txtResult = "No se puede registrar una billetera sin nombre.";
+            Toast.makeText(getApplication(),
+                    "No se puede registrar una billetera sin nombre",
+                    Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(getApplication(), txtResult, Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void showResult(String s) {
+        Toast.makeText(getApplication(), s, Toast.LENGTH_SHORT).show();
     }
 
     private boolean validateInfo(String name) {

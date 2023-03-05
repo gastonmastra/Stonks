@@ -1,5 +1,7 @@
 package com.example.stonks.database.repository.room;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.stonks.database.repository.room.daos.ClassificationDao;
 import com.example.stonks.database.repository.room.entities.Classification;
 import com.example.stonks.database.repository.interfaces.IClassificationRepository;
@@ -22,8 +24,8 @@ public class ClassificationRepositoryRoom implements IClassificationRepository {
     }
 
     @Override
-    public List<Classification> getAllClassifications() {
-        return dao.getClassifications();
+    public MutableLiveData<List<Classification>> getAllClassifications() {
+        return null;
     }
 
     @Override

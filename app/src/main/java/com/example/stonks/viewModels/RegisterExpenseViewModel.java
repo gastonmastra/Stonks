@@ -83,9 +83,6 @@ public class RegisterExpenseViewModel extends AndroidViewModel implements Wallet
     public void register(String description, double amount, Classification classification, Wallet wallet){
         Description = description;
         Amount = amount;
-
-        //_walletRepository.getWallet(walletName, this);
-        //Classification classification = _classificationRepository.getClassification(classificationName);
         Movement movement = wallet.createMovement(Description, Amount, classification);
         _walletRepository.updateWallet(wallet);
         _movementRepository.insertMovement(movement);

@@ -2,6 +2,7 @@ package com.example.stonks.database.repository.room;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.stonks.database.Firebase;
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
 import com.example.stonks.database.repository.room.daos.WalletDao;
 import com.example.stonks.database.repository.room.entities.Wallet;
@@ -34,7 +35,7 @@ public class WalletRepositoryRoom implements IWalletRepository {
     }
 
     @Override
-    public void insertWallet(Wallet wallet) {
+    public void insertWallet(Wallet wallet, Firebase.IFirebaseCallback callback) {
         dao.insertWallet(wallet);
     }
 

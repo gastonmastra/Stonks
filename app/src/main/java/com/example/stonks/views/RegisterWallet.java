@@ -36,7 +36,11 @@ public class RegisterWallet extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view){
         String txtName = name.getText().toString();
-        long amount = Long.parseLong(initialAmount.getText().toString());
+        long amount;
+        if (!initialAmount.getText().toString().equals(""))
+            amount = Long.parseLong(initialAmount.getText().toString());
+        else
+            amount = 0;
         model.register(txtName, amount);
     }
 

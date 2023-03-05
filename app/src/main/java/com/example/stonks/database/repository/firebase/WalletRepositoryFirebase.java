@@ -4,19 +4,14 @@ import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.stonks.database.Firebase;
 import com.example.stonks.database.repository.room.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WalletRepositoryFirebase implements IWalletRepository {
@@ -44,11 +39,10 @@ public class WalletRepositoryFirebase implements IWalletRepository {
 
     @Override
     public void getWallet(String name, FirebaseCallback callback) {
-        Wallet wallet = new Wallet();
         walletCollection.document(name).get()
-                .addOnSuccessListener(documentSnapshot -> {
-                    callback.getWallet(documentSnapshot.toObject(Wallet.class));
-                });
+                .addOnSuccessListener(documentSnapshot ->
+                        callback.getWallet(documentSnapshot.toObject(Wallet.class))
+                );
     }
 
     public interface FirebaseCallback{
@@ -56,8 +50,22 @@ public class WalletRepositoryFirebase implements IWalletRepository {
     }
 
     @Override
-    public void insertWallet(Wallet wallet) {
-        walletCollection.document(wallet.getName()).set(wallet);
+    public void insertWallet(Wallet wallet, Firebase.IFirebaseCallback callback) {
+        walletCollection.document(wallet.getName())
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()){
+                            callback.onCallback(
+                                    "The wallet " + wallet.getName() + " already exists!"
+                            );
+                        } else{
+                            walletCollection.document(wallet.getName()).set(wallet);
+                            callback.onCallback(
+                                    "Wallet " + wallet.getName() + " registered successfully"
+                            );
+                        }
+                    });
+
     }
 
     @Override
