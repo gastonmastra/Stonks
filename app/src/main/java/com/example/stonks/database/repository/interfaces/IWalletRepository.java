@@ -2,6 +2,7 @@ package com.example.stonks.database.repository.interfaces;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.stonks.database.Firebase;
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
 import com.example.stonks.database.repository.room.entities.Wallet;
 
@@ -12,7 +13,7 @@ public interface IWalletRepository {
 
     void getWallet(String name, WalletRepositoryFirebase.FirebaseCallback callback);
 
-    void insertWallet(Wallet wallet);
+    void insertWallet(Wallet wallet, Firebase.IFirebaseCallback callback);
     void updateWallet(Wallet wallet);
     void deleteWallet(Wallet wallet);
 }

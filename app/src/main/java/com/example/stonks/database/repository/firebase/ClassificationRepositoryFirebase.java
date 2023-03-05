@@ -1,21 +1,20 @@
 package com.example.stonks.database.repository.firebase;
 
-import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 
-import com.example.stonks.database.Firebase;
 import com.example.stonks.database.repository.room.entities.Classification;
 import com.example.stonks.database.repository.interfaces.IClassificationRepository;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClassificationRepositoryFirebase implements IClassificationRepository {
 
     private static ClassificationRepositoryFirebase instance;
+    MutableLiveData<List<Classification>> classifications;
+    private final CollectionReference classificationCollection = FirebaseFirestore.getInstance()
+            .collection("classifications");
     private ClassificationRepositoryFirebase(){}
     public static ClassificationRepositoryFirebase getInstance(){
         if (instance == null){
@@ -24,17 +23,13 @@ public class ClassificationRepositoryFirebase implements IClassificationReposito
         return instance;
     }
     @Override
-    public List<Classification> getAllClassifications() {
-        List<Classification> classifications = new ArrayList<>();
-        Firebase.getInstance().collection("classifications").get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()){
-                            for (QueryDocumentSnapshot document : task.getResult()){
-                                classifications.add(document.toObject(Classification.class));
-                            }
-                        }
+    public MutableLiveData<List<Classification>> getAllClassifications() {
+        if (classifications == null)
+            classifications = new MutableLiveData<>();
+        classificationCollection.get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        classifications.setValue(task.getResult().toObjects(Classification.class));
                     }
                 });
         return classifications;

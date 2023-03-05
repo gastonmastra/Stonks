@@ -11,4 +11,8 @@ public class Firebase {
         }
         return instance;
     }
+
+    public interface IFirebaseCallback {
+        void onCallback(String result);
+    }
 }
