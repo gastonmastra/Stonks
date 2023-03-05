@@ -14,5 +14,5 @@ public interface IMovementRepository {
     void updateMovement(Movement movement);
     void deleteMovement(Movement movement);
 
-    void getMovementOfWallet(Wallet wallet);
+    MutableLiveData<List<Movement>> getMovementOfWallet(Wallet wallet);
 }

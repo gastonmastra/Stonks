@@ -1,5 +1,6 @@
 package com.example.stonks.utilities;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,9 @@ import com.example.stonks.R;
 import com.example.stonks.database.repository.room.entities.Movement;
 
 import java.text.SimpleDateFormat;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 public class CustomAdapter extends BaseAdapter {
     Context context;
@@ -22,7 +23,7 @@ public class CustomAdapter extends BaseAdapter {
     public CustomAdapter(Context context, List<Movement> movements) {
         this.context = context;
         this.movements = movements;
-        this.movements.sort(Comparator.comparing(Movement::getDate));
+        movements.sort(Comparator.comparing(Movement::getDate).reversed());
     }
 
     @Override
@@ -63,16 +64,18 @@ public class CustomAdapter extends BaseAdapter {
 
         txtMovement.setText(movement.getDescription());
         txtWallet.setText(movement.getWallet().getName());
-        txtAmount.setText("$" + Double.toString(movement.getAmount()));
+        txtAmount.setText(
+                String.format(Locale.getDefault(), "$%.2f", movement.getAmount())
+        );
         txtAmountWallet.setText(
-                "$" + Double.toString(movement.getBeforeAmount() - movement.getAmount())
+                String.format(Locale.getDefault(), "$%.2f", movement.getBeforeAmount() - movement.getAmount())
         );
         final String patternDate = "dd/MM/yyyy";
-        String formatedDate = new SimpleDateFormat(patternDate).format(movement.getDate());
-        txtDate.setText(formatedDate);
+        String formattedDate = new SimpleDateFormat(patternDate, Locale.getDefault()).format(movement.getDate());
+        txtDate.setText(formattedDate);
         String patternHour = "hh:mm";
-        String formatedHour = new SimpleDateFormat(patternHour).format(movement.getDate());
-        txtHour.setText(formatedHour);
+        String formattedHour = new SimpleDateFormat(patternHour, Locale.getDefault()).format(movement.getDate());
+        txtHour.setText(formattedHour);
 
         return view;
     }

@@ -50,7 +50,7 @@ public class MovementRepositoryRoom implements IMovementRepository {
     }
 
     @Override
-    public void getMovementOfWallet(Wallet wallet) {
-
+    public MutableLiveData<List<Movement>> getMovementOfWallet(Wallet wallet) {
+        return null;
     }
 }

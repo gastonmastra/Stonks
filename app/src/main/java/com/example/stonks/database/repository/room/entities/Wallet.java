@@ -10,8 +10,6 @@ import java.util.Date;
 @Entity(tableName = "Wallets")
 public class Wallet {
 
-    //@PrimaryKey(autoGenerate = true)
-    //@ColumnInfo(name = "wallet_id")
     private int walletId;
     private double money;
     private String name;

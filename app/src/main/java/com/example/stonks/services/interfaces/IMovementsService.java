@@ -13,6 +13,5 @@ public interface IMovementsService {
     void insertMovement(Movement movement);
     void updateMovement(Movement movement);
     void deleteMovement(Movement movement);
-
-    void getMovementsOfWallet(Wallet wallet);
+    MutableLiveData<List<Movement>> getMovementsOfWallet(Wallet wallet);
 }

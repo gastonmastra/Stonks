@@ -10,5 +10,7 @@
     <string name="mount">Monto</string>
     <string name="initialAmount">Monto inicial</string>
     <string name="register">Registrar</string>
+    <string name="title_activity_wallets_list">WalletsList</string>
+    <string name="movement_amount">$%1$f</string>
 
 </resources>
