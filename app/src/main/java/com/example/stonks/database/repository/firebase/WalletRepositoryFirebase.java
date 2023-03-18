@@ -7,7 +7,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.stonks.database.Firebase;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;

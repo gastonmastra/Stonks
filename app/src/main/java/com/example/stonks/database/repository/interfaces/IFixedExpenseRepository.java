@@ -1,6 +1,6 @@
 package com.example.stonks.database.repository.interfaces;
 
-import com.example.stonks.database.repository.room.entities.FixedExpense;
+import com.example.stonks.entities.FixedExpense;
 
 public interface IFixedExpenseRepository {
     FixedExpense getFixedExpense(int fixedExpenseId);

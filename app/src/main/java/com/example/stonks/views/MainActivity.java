@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.example.stonks.R;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Wallet;
 import com.example.stonks.utilities.AdapterWallets;
 import com.example.stonks.viewModels.MainActivityViewModel;
 
@@ -44,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void BindData(){
-        btnRegisterExpense = (Button) findViewById(R.id.btnRegisterExpense);
+        btnRegisterExpense = findViewById(R.id.btnRegisterExpense);
         btnRegisterExpense.setOnClickListener(this);
-        btnRegisterWallet = (Button) findViewById(R.id.btnRegisterWallet);
+        btnRegisterWallet = findViewById(R.id.btnRegisterWallet);
         btnRegisterWallet.setOnClickListener(this);
-        btnViewMovements = (Button) findViewById(R.id.btnViewMovements);
+        btnViewMovements = findViewById(R.id.btnViewMovements);
         btnViewMovements.setOnClickListener(this);
         recycler = findViewById(R.id.recyclerId);
         recycler.setLayoutManager(

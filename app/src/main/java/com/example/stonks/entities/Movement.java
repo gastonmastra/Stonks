@@ -1,33 +1,10 @@
-package com.example.stonks.database.repository.room.entities;
-
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.PrimaryKey;
+package com.example.stonks.entities;
 
 import java.util.Date;
 
-@Entity(
-        tableName = "Movements",
-        foreignKeys = {
-                @ForeignKey(
-                        entity = Wallet.class,
-                        parentColumns = "wallet_id",
-                        childColumns = "wallet_id"
-                ),
-                @ForeignKey(
-                        entity = Classification.class,
-                        parentColumns = "classification_id",
-                        childColumns = "classification_id"
-                )
-        }
-)
 public class Movement {
-    //@PrimaryKey( autoGenerate = true ) @ColumnInfo( name = "movement_id" )
     private Long MovementId;
-    //@ColumnInfo( name = "wallet_id" )
     private Wallet Wallet;
-    //@ColumnInfo( name = "classification_id", defaultValue = "NULL") private Long ClassificationId;
     private String Description;
     private boolean Debt;
     private double Amount;
@@ -90,11 +67,11 @@ public class Movement {
         return Debt;
     }
 
-    public com.example.stonks.database.repository.room.entities.Wallet getWallet() {
+    public com.example.stonks.entities.Wallet getWallet() {
         return Wallet;
     }
 
-    public void setWallet(com.example.stonks.database.repository.room.entities.Wallet wallet) {
+    public void setWallet(com.example.stonks.entities.Wallet wallet) {
         Wallet = wallet;
     }
 

@@ -1,13 +1,9 @@
-package com.example.stonks.database.repository.room.entities;
+package com.example.stonks.entities;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "Wallets")
 public class Wallet {
 
     private int walletId;
@@ -15,10 +11,6 @@ public class Wallet {
     private String name;
 
     public Wallet() { }
-
-    public double getActualAmount(){
-        return getMoney();
-    }
 
     public Movement createMovement(String description, double amount, Classification classification){
         Movement movement =  new Movement();
@@ -46,6 +38,10 @@ public class Wallet {
 
     public void setMoney(double money) {
         this.money = money;
+    }
+
+    public double getActualAmount(){
+        return getMoney();
     }
 
     public String getName() {

@@ -2,7 +2,7 @@ package com.example.stonks.database.repository.firebase;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.stonks.database.repository.room.entities.Classification;
+import com.example.stonks.entities.Classification;
 import com.example.stonks.database.repository.interfaces.IClassificationRepository;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;

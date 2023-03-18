@@ -1,18 +1,11 @@
-package com.example.stonks.database.repository.room.entities;
+package com.example.stonks.entities;
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity
 public class User {
 
     public void setUserId(int userId) {
         UserId = userId;
     }
 
-    @PrimaryKey(
-            autoGenerate = true
-    )
     public int UserId;
     public String Username;
     public String Password;

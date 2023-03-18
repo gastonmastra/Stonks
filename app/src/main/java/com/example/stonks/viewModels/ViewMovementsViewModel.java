@@ -4,26 +4,20 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 
 import com.example.stonks.database.repository.firebase.MovementRepositoryFirebase;
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
-import com.example.stonks.database.repository.room.entities.Classification;
-import com.example.stonks.database.repository.room.entities.Movement;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Movement;
+import com.example.stonks.entities.Wallet;
 import com.example.stonks.services.MovementsService;
 import com.example.stonks.services.WalletService;
 import com.example.stonks.services.interfaces.IMovementsService;
 import com.example.stonks.services.interfaces.IWalletService;
-import com.example.stonks.utilities.CustomAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ViewMovementsViewModel extends AndroidViewModel {
 

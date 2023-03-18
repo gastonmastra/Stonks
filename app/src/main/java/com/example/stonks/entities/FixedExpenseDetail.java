@@ -1,17 +1,10 @@
-package com.example.stonks.database.repository.room.entities;
+package com.example.stonks.entities;
 
 import androidx.annotation.Nullable;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "Fixed_Expense_Detail")
 public class FixedExpenseDetail {
-
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "fixed_expense_detail_id")
     public int FixedExpenseDetailId;
     public Date Date;
     @Nullable

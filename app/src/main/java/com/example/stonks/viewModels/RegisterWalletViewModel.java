@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Wallet;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 
 public class RegisterWalletViewModel extends AndroidViewModel {

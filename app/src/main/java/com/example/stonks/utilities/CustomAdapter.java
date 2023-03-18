@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.stonks.R;
-import com.example.stonks.database.repository.room.entities.Movement;
+import com.example.stonks.entities.Movement;
 
 import java.text.SimpleDateFormat;
 import java.util.Comparator;

@@ -2,8 +2,8 @@ package com.example.stonks.services.interfaces;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.stonks.database.repository.room.entities.Movement;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Movement;
+import com.example.stonks.entities.Wallet;
 
 import java.util.List;
 

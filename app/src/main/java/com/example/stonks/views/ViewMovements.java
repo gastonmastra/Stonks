@@ -1,10 +1,7 @@
 package com.example.stonks.views;
 
-import static java.util.logging.Logger.global;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -15,10 +12,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.stonks.R;
-import com.example.stonks.database.repository.room.entities.Movement;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Movement;
+import com.example.stonks.entities.Wallet;
 import com.example.stonks.utilities.CustomAdapter;
-import com.example.stonks.viewModels.RegisterExpenseViewModel;
 import com.example.stonks.viewModels.ViewMovementsViewModel;
 
 import java.util.List;
@@ -59,7 +55,7 @@ public class ViewMovements extends AppCompatActivity {
     }
 
     private void showWallets(List<Wallet> wallets){
-        ArrayAdapter adapter = new ArrayAdapter(this,
+        ArrayAdapter<Wallet> adapter = new ArrayAdapter<>(this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                 wallets);
         spinnerWallets.setAdapter(adapter);

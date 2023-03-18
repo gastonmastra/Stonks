@@ -11,13 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.stonks.R;
-import com.example.stonks.database.repository.room.entities.Classification;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Classification;
+import com.example.stonks.entities.Wallet;
 import com.example.stonks.viewModels.RegisterExpenseViewModel;
-import com.example.stonks.database.repository.room.entities.Movement;
 
 import java.util.List;
 
@@ -37,11 +35,11 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     }
 
     private void InitializeComponents() {
-        spinnerClassification = (Spinner) findViewById(R.id.spinClasification);
-        spinnerWallet = (Spinner) findViewById(R.id.spinWallets);
-        etDescription = (EditText) findViewById(R.id.etDescription);
-        etMount = (EditText) findViewById(R.id.etMount);
-        btnRegister = (Button) findViewById(R.id.btnRegisterExpense);
+        spinnerClassification = findViewById(R.id.spinClasification);
+        spinnerWallet = findViewById(R.id.spinWallets);
+        etDescription = findViewById(R.id.etDescription);
+        etMount = findViewById(R.id.etMount);
+        btnRegister = findViewById(R.id.btnRegisterExpense);
         btnRegister.setOnClickListener(this::Register);
         Model = new ViewModelProvider(this).get(RegisterExpenseViewModel.class);
         SubscribeData();
@@ -55,13 +53,13 @@ public class RegisterExpense extends AppCompatActivity implements AdapterView.On
     }
 
     public void showClassifications(List<Classification> classifications){
-        ArrayAdapter adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, classifications);
+        ArrayAdapter<Classification> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, classifications);
         spinnerClassification.setAdapter(adapter);
         spinnerClassification.setOnItemSelectedListener(this);
     }
 
     public void showWallets(List<Wallet> wallets){
-        ArrayAdapter adapter = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, wallets);
+        ArrayAdapter<Wallet> adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, wallets);
         spinnerWallet.setAdapter(adapter);
         spinnerWallet.setOnItemSelectedListener(this);
     }

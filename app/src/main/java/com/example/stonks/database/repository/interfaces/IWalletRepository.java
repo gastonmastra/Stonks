@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.stonks.database.Firebase;
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Wallet;
 
 import java.util.List;
 

@@ -10,9 +10,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.stonks.database.Firebase;
-import com.example.stonks.database.repository.room.entities.Classification;
-import com.example.stonks.database.repository.room.entities.Movement;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Classification;
+import com.example.stonks.entities.Movement;
+import com.example.stonks.entities.Wallet;
 import com.example.stonks.database.repository.firebase.ClassificationRepositoryFirebase;
 import com.example.stonks.database.repository.firebase.MovementRepositoryFirebase;
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
@@ -89,7 +89,7 @@ public class RegisterExpenseViewModel extends AndroidViewModel implements Wallet
     }
 
     @Override
-    public void getWallet(com.example.stonks.database.repository.room.entities.Wallet wallet) {
+    public void getWallet(com.example.stonks.entities.Wallet wallet) {
         Wallet =  wallet;
     }
 }

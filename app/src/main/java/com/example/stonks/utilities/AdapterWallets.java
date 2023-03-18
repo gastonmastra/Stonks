@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.stonks.R;
 import com.example.stonks.database.repository.firebase.MovementRepositoryFirebase;
-import com.example.stonks.database.repository.room.entities.Movement;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Movement;
+import com.example.stonks.entities.Wallet;
 
 import java.util.List;
 import java.util.Locale;

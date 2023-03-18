@@ -10,7 +10,7 @@ import com.example.stonks.database.repository.firebase.MovementRepositoryFirebas
 import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
-import com.example.stonks.database.repository.room.entities.Wallet;
+import com.example.stonks.entities.Wallet;
 import java.util.List;
 
 public class MainActivityViewModel extends AndroidViewModel {

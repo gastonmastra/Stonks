@@ -1,13 +1,6 @@
-package com.example.stonks.database.repository.room.entities;
+package com.example.stonks.entities;
 
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-@Entity(tableName = "Fixed_Expenses")
 public class FixedExpense {
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "fixed_expense_id")
     public int FixedExpenseId;
     public String Description;
     public String Name;

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.stonks.R;
-import com.example.stonks.database.repository.room.entities.Movement;
+import com.example.stonks.entities.Movement;
 
 import java.util.Comparator;
 import java.util.List;
