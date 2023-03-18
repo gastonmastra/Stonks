@@ -13,4 +13,10 @@
     <string name="title_activity_wallets_list">WalletsList</string>
     <string name="movement_amount">$%1$f</string>
 
+    <string name="username_email">Username or email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+
+
 </resources>
