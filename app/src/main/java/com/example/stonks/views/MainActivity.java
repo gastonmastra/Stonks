@@ -19,7 +19,7 @@ import com.example.stonks.viewModels.MainActivityViewModel;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnRegisterExpense, btnRegisterWallet, btnViewMovements;
+    Button btnRegisterExpense, btnRegisterWallet, btnViewMovements, btnLogout;
     MainActivityViewModel model;
     RecyclerView recycler;
     @Override
@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRegisterWallet.setOnClickListener(this);
         btnViewMovements = findViewById(R.id.btnViewMovements);
         btnViewMovements.setOnClickListener(this);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(this);
         recycler = findViewById(R.id.recyclerId);
         recycler.setLayoutManager(
                 new LinearLayoutManager(this,
@@ -60,11 +62,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == R.id.btnRegisterExpense) {
             Intent intent = new Intent(this, RegisterExpense.class);
             startActivity(intent);
-        }else if(view.getId() == R.id.btnRegisterWallet){
+        }else if (view.getId() == R.id.btnRegisterWallet){
             Intent intent = new Intent(this, RegisterWallet.class);
             startActivity(intent);
-        }else if(view.getId() == R.id.btnViewMovements){
+        }else if (view.getId() == R.id.btnViewMovements){
             Intent intent = new Intent(this, ViewMovements.class);
+            startActivity(intent);
+        }else if (view.getId() == R.id.btnLogout){
+            model.logout();
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
     }

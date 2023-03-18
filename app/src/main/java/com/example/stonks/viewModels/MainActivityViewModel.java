@@ -11,6 +11,8 @@ import com.example.stonks.database.repository.firebase.WalletRepositoryFirebase;
 import com.example.stonks.database.repository.interfaces.IMovementRepository;
 import com.example.stonks.database.repository.interfaces.IWalletRepository;
 import com.example.stonks.entities.Wallet;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.List;
 
 public class MainActivityViewModel extends AndroidViewModel {
@@ -27,6 +29,10 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public MutableLiveData<List<Wallet>> getWallets(){
         return wallets;
+    }
+
+    public void logout() {
+        FirebaseAuth.getInstance().signOut();
     }
 
 }

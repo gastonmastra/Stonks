@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.stonks.R;
 import com.example.stonks.viewModels.LoginViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -21,11 +23,17 @@ public class LoginActivity extends AppCompatActivity {
 
     String user, password;
 
+    FirebaseUser currentUser;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         BindComponents();
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null)
+            this.goHome();
     }
 
     private void BindComponents() {
@@ -46,11 +54,15 @@ public class LoginActivity extends AppCompatActivity {
 
     private void onComplete(String error) {
         if (error.isEmpty()){
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            this.goHome();
         }
         else
             showError(error);
+    }
+
+    private void goHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void showError(String error) {
